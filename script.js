@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const videos = document.querySelectorAll('.project-video');
+  const fadeElements = document.querySelectorAll('.fade-on-scroll, .project-video');
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
 
-  videos.forEach(video => observer.observe(video));
+  fadeElements.forEach(el => observer.observe(el));
 });
