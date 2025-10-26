@@ -378,3 +378,25 @@ footer {
   .profile-img { width: 120px; height: 120px; }
   .video-wrapper iframe { height: 200px; }
 }
+
+.project-repo {
+  margin-top: 2rem;
+}
+
+.project-repo h3 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-repo a {
+  color: #00d4ff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-repo a:hover {
+  color: #8f44fd;
+}
+

@@ -37,7 +37,6 @@
     <section class="project-media">
       <h3>Media Showcase</h3>
 
-      <!-- Video -->
       <div class="video-wrapper fade-on-scroll">
         <iframe 
           width="560" 
@@ -53,11 +52,20 @@
         <p class="video-caption">Gameplay trailer</p>
       </div>
 
-      <!-- Screenshot Gallery -->
       <div class="image-gallery fade-on-scroll">
         <img src="images/ArcticInvasionss1.png" alt="Arctic Invasion Screenshot 1">
         <img src="images/ArcticInvasionss2.png" alt="Arctic Invasion Screenshot 2">
       </div>
+    </section>
+
+    <!-- --- GitHub Repository --- -->
+    <section class="project-repo">
+      <h3>Repository</h3>
+      <p>
+        <a href="https://github.com/kingkaue/PenguinTD/tree/main" target="_blank" rel="noopener noreferrer">
+          View Arctic Invasion on GitHub
+        </a>
+      </p>
     </section>
 
     <a href="projects.html" class="btn">Back to Projects</a>
@@ -68,14 +76,8 @@
   </footer>
 
   <script>
-    // --- Smooth Fade-In on Scroll ---
     const fadeElements = document.querySelectorAll('.fade-on-scroll');
-
-    const appearOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -83,7 +85,6 @@
         observer.unobserve(entry.target);
       });
     }, appearOptions);
-
     fadeElements.forEach(el => appearOnScroll.observe(el));
   </script>
 </body>
