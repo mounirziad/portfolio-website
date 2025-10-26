@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slush Rush – Mounir Ziad</title>
+  <title>Arctic Invasion – Mounir Ziad</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,21 +18,47 @@
     </nav>
   </header>
 
-  <main id="slushrush-page" class="project-page">
-    <h2>Slush Rush</h2>
-    <p><strong>Role:</strong> Co-Lead Programmer – Tower Defense Mobile Game</p>
-    <p><strong>Studio:</strong> Slush Rush Studios – Mobile Game Development</p>
-    <p><strong>Duration:</strong> Aug 2025 – Present</p>
+  <main id="arcticinvasion-page" class="project-page">
+    <h2>Arctic Invasion</h2>
+    <p><strong>Role:</strong> Lead Programmer – Core Gameplay Systems</p>
+    <p><strong>Studio:</strong> Arctic Games Studio</p>
+    <p><strong>Duration:</strong> Sep 2025 – Present</p>
 
     <h3>Project Highlights</h3>
     <ul>
-      <li>Co-led development of a modular, scalable mobile tower defense game</li>
-      <li>Implemented drag-and-drop tower placement and customizable upgrade paths</li>
-      <li>Programmed enemy wave logic, spawn patterns, and pathfinding behaviors for diverse enemy types</li>
-      <li>Built a barracks system dynamically spawning allied units from player-placed buildings</li>
-      <li>Engineered a persistent currency system including in-game purchases, shop UI, and reward logic</li>
-      <li>Collaborated with UI designers and artists to create responsive interfaces for mobile platforms</li>
+      <li>Developed procedural ice terrain generation with dynamic snow physics</li>
+      <li>Implemented AI for multiple enemy types with patrol, attack, and retreat behaviors</li>
+      <li>Integrated cinematic camera sequences for boss encounters</li>
+      <li>Built optimized particle systems for snowstorms and explosions</li>
+      <li>Created a modular weapon and upgrade system with scriptable objects</li>
     </ul>
+
+    <!-- --- Media Section --- -->
+    <section class="project-media">
+      <h3>Media Showcase</h3>
+
+      <!-- Video -->
+      <div class="video-wrapper fade-on-scroll">
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/R2ZupiC5tmM?si=Pd5VUYB9Do_R5UJl" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen
+          class="project-video">
+        </iframe>
+        <p class="video-caption">Gameplay trailer</p>
+      </div>
+
+      <!-- Screenshot Gallery -->
+      <div class="image-gallery fade-on-scroll">
+        <img src="images/ArcticInvasionss1.png" alt="Arctic Invasion Screenshot 1">
+        <img src="images/ArcticInvasionss2.png" alt="Arctic Invasion Screenshot 2">
+      </div>
+    </section>
 
     <a href="projects.html" class="btn">Back to Projects</a>
   </main>
@@ -40,5 +66,25 @@
   <footer>
     <p>© 2025 Mounir Ziad</p>
   </footer>
+
+  <script>
+    // --- Smooth Fade-In on Scroll ---
+    const fadeElements = document.querySelectorAll('.fade-on-scroll');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    fadeElements.forEach(el => appearOnScroll.observe(el));
+  </script>
 </body>
 </html>
