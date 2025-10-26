@@ -453,17 +453,15 @@ footer {
 
 /* --- Gameplay Link Styling --- */
 .project-media .video-caption a {
-  font-family: "Poppins", sans-serif; /* Match page font */
-  color: #44fd8f;                     /* Nature's Solace accent color */
-  text-decoration: none;               /* No underline */
-  font-style: normal;                  /* Not italic */
-  font-weight: 500;                    /* Optional: keep slightly bold */
+  color: #44fd8f;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .project-media .video-caption a:hover {
-  color: #00ffc3;                     /* Slightly lighter shade on hover */
-  text-decoration: none;               /* Still no underline on hover */
+  color: #00ffc3;
 }
 
 /* Remove italic and ensure normal font style */
