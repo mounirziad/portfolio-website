@@ -332,7 +332,6 @@ header {
 
 .video-caption {
   text-align: center;
-  font-style: italic;
   color: #888;
   margin-top: 0.5rem;
   font-size: 0.9rem;
@@ -453,22 +452,16 @@ footer {
 
 /* --- Gameplay Link Styling --- */
 .project-media .video-caption a {
-  color: #44fd8f;
-  text-decoration: none;
-  font-style: normal;
+  color: white !important;
+  text-decoration: none !important;
+  font-style: normal !important;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
 .project-media .video-caption a:hover {
-  color: #00ffc3;
+  color: #00ffc3 !important;
 }
 
-/* Remove italic and ensure normal font style */
-.project-media .video-caption,
-.project-media .video-caption a {
+.project-media .video-caption {
   font-style: normal !important;
-  text-decoration: none !important;
-  color: #44fd8f !important; /* Accent color */
-  font-weight: 500;
 }
