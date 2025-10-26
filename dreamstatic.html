@@ -38,13 +38,15 @@
     <section class="project-media">
       <h3>Media Showcase</h3>
 
-      <!-- First Video -->
+      <!-- Method 1: Google Drive Embed (Most Reliable) -->
       <div class="video-wrapper fade-on-scroll">
-        <video controls muted playsinline class="project-video">
-          <source src="https://drive.google.com/uc?export=download&id=1B5IoimyaeuZHYhpZwyWToR5eNi1tVZz0" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <p class="video-caption">Gameplay demonstration</p>
+        <iframe src="https://drive.google.com/file/d/1B5IoimyaeuZHYhpZwyWToR5eNi1tVZz0/preview#t=26s" 
+                width="800" 
+                height="450" 
+                allow="autoplay; fullscreen" 
+                class="project-video">
+        </iframe>
+        <p class="video-caption">Gameplay demonstration (starts at 26s)</p>
       </div>
 
       <!-- Screenshot Gallery -->
@@ -53,14 +55,27 @@
         <img src="images/mechanisoul_screenshot2.png" alt="Mechanisoul Screenshot 2">
       </div>
 
-      <!-- Second Video (replace with actual link) -->
+      <!-- Second Video Placeholder -->
       <div class="video-wrapper fade-on-scroll">
-        <video controls muted playsinline class="project-video">
-          <source src="https://drive.google.com/uc?export=download&id=YOUR_SECOND_VIDEO_ID" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <iframe src="https://drive.google.com/file/d/YOUR_SECOND_VIDEO_ID/preview" 
+                width="800" 
+                height="450" 
+                allow="autoplay; fullscreen" 
+                class="project-video">
+        </iframe>
         <p class="video-caption">Combat system showcase</p>
       </div>
+
+      <!-- Alternative: Direct Video Method (if you want to try it) -->
+      <!--
+      <div class="video-wrapper fade-on-scroll">
+        <video controls muted playsinline class="project-video">
+          <source src="https://drive.google.com/uc?export=download&id=1B5IoimyaeuZHYhpZwyWToR5eNi1tVZz0" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-caption">Gameplay demonstration - Direct method</p>
+      </div>
+      -->
     </section>
 
     <a href="projects.html" class="btn">Back to Projects</a>
@@ -88,25 +103,6 @@
     }, appearOptions);
 
     fadeElements.forEach(el => appearOnScroll.observe(el));
-
-    // Video loading feedback
-    document.querySelectorAll('video').forEach(video => {
-      video.addEventListener('error', function() {
-        console.error('Video failed to load:', this.src);
-        const caption = this.parentElement.querySelector('.video-caption');
-        if (caption) {
-          caption.innerHTML += ' <span style="color: #ff6b6b;">(Video loading failed)</span>';
-        }
-      });
-
-      video.addEventListener('loadstart', function() {
-        console.log('Video loading started:', this.src);
-      });
-
-      video.addEventListener('loadeddata', function() {
-        console.log('Video loaded successfully:', this.src);
-      });
-    });
   </script>
 </body>
 </html>
