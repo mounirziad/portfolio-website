@@ -466,11 +466,11 @@ footer {
   text-decoration: none;               /* Still no underline on hover */
 }
 
-/* Optional: remove italic from the caption itself */
-.project-media .video-caption {
-  font-style: normal;
-  font-size: 0.95rem;
-  color: #bdf9d8;                     /* Subtle text color to match page theme */
-  text-align: center;
-  margin-top: 0.5rem;
+/* Remove italic and ensure normal font style */
+.project-media .video-caption,
+.project-media .video-caption a {
+  font-style: normal !important;
+  text-decoration: none !important;
+  color: #44fd8f !important; /* Accent color */
+  font-weight: 500;
 }
