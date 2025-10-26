@@ -40,10 +40,11 @@
 
       <!-- First Video -->
       <div class="video-wrapper fade-on-scroll">
-        <video autoplay muted loop playsinline class="project-video">
-          <source src="videos/mechanisoul_demo.mp4" type="video/mp4">
+        <video controls muted playsinline class="project-video">
+          <source src="https://github.com/mounirziad/portfolio-website/raw/main/videos/mechanisoul_demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <p class="video-caption">Gameplay demonstration</p>
       </div>
 
       <!-- Screenshot Gallery -->
@@ -54,10 +55,11 @@
 
       <!-- Second Video -->
       <div class="video-wrapper fade-on-scroll">
-        <video autoplay muted loop playsinline class="project-video">
-          <source src="videos/mechanisoul_combat.mp4" type="video/mp4">
+        <video controls muted playsinline class="project-video">
+          <source src="https://github.com/mounirziad/portfolio-website/raw/main/videos/mechanisoul_combat.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <p class="video-caption">Combat system showcase</p>
       </div>
     </section>
 
@@ -86,6 +88,18 @@
     }, appearOptions);
 
     fadeElements.forEach(el => appearOnScroll.observe(el));
+
+    // Add video error handling
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('error', function() {
+        console.error('Video loading error:', this.src);
+        this.parentElement.innerHTML += '<p style="color: red; text-align: center;">Video failed to load. Please check the file path.</p>';
+      });
+      
+      video.addEventListener('loadeddata', function() {
+        console.log('Video loaded successfully:', this.src);
+      });
+    });
   </script>
 </body>
 </html>
