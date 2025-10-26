@@ -53,7 +53,7 @@
         <img src="images/mechanisoul_screenshot2.png" alt="Mechanisoul Screenshot 2">
       </div>
 
-      <!-- Second Video -->
+      <!-- Second Video (replace with actual link) -->
       <div class="video-wrapper fade-on-scroll">
         <video controls muted playsinline class="project-video">
           <source src="https://drive.google.com/uc?export=download&id=YOUR_SECOND_VIDEO_ID" type="video/mp4">
@@ -98,11 +98,11 @@
           caption.innerHTML += ' <span style="color: #ff6b6b;">(Video loading failed)</span>';
         }
       });
-      
+
       video.addEventListener('loadstart', function() {
         console.log('Video loading started:', this.src);
       });
-      
+
       video.addEventListener('loadeddata', function() {
         console.log('Video loaded successfully:', this.src);
       });
