@@ -293,10 +293,26 @@ header {
   margin-bottom: 2rem;
 }
 
-.video-wrapper iframe {
+.project-video {
+  width: 80%;
+  max-width: 900px;
   border-radius: 0.8rem;
-  border: 2px solid #44fd8f;
-  max-width: 100%;
+  border: 2px solid #8f44fd;
+  box-shadow: 0 0 20px rgba(143, 68, 253, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.project-video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(143, 68, 253, 0.5);
+}
+
+/* --- Scroll Reveal --- */
+.project-video.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* --- Footer --- */

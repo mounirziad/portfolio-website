@@ -34,11 +34,58 @@
       <li>Designed a centralized PlayerManager component to manage health, movement, and upgrade systems</li>
     </ul>
 
+    <!-- --- Media Section --- -->
+    <section class="project-media">
+      <h3>Media Showcase</h3>
+
+      <!-- First Video -->
+      <div class="video-wrapper fade-on-scroll">
+        <video autoplay muted loop playsinline class="project-video">
+          <source src="videos/mechanisoul_demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Screenshot Gallery -->
+      <div class="image-gallery fade-on-scroll">
+        <img src="images/mechanisoul_screenshot1.png" alt="Mechanisoul Screenshot 1">
+        <img src="images/mechanisoul_screenshot2.png" alt="Mechanisoul Screenshot 2">
+      </div>
+
+      <!-- Second Video -->
+      <div class="video-wrapper fade-on-scroll">
+        <video autoplay muted loop playsinline class="project-video">
+          <source src="videos/mechanisoul_combat.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
     <a href="projects.html" class="btn">Back to Projects</a>
   </main>
 
   <footer>
     <p>© 2025 Mounir Ziad</p>
   </footer>
+
+  <script>
+    // --- Smooth Fade-In on Scroll ---
+    const fadeElements = document.querySelectorAll('.fade-on-scroll');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    fadeElements.forEach(el => appearOnScroll.observe(el));
+  </script>
 </body>
 </html>
