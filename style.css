@@ -312,4 +312,50 @@ header {
 
 .project-video:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 25px rgba(143, 68, 
+  box-shadow: 0 0 25px rgba(143, 68, 253, 0.5);
+}
+
+/* --- Scroll Reveal --- */
+.fade-on-scroll,
+.project-video {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #999;
+  animation: fadeIn 1s ease 0.4s both;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
