@@ -265,7 +265,7 @@ header {
   color: #fff;
 }
 
-/* Image Gallery */
+/* --- Image Gallery --- */
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -276,17 +276,19 @@ header {
 
 .image-gallery img {
   width: 300px;
+  height: 180px;
+  object-fit: cover; /* Keeps aspect ratio without stretching */
   border-radius: 0.8rem;
   border: 2px solid #44fd8f;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(68, 253, 143, 0.5);
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgba(68, 253, 143, 0.6);
 }
 
-/* Video Wrapper */
+/* --- Video Wrapper --- */
 .video-wrapper {
   display: flex;
   justify-content: center;
@@ -294,55 +296,20 @@ header {
 }
 
 .project-video {
-  width: 80%;
-  max-width: 900px;
-  border-radius: 0.8rem;
-  border: 2px solid #8f44fd;
-  box-shadow: 0 0 20px rgba(143, 68, 253, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 1rem;
+  display: block;
   opacity: 0;
   transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.project-video:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 25px rgba(143, 68, 253, 0.5);
-}
-
-/* --- Scroll Reveal --- */
 .project-video.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* --- Footer --- */
-footer {
-  text-align: center;
-  padding: 1rem 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: auto;
-  font-size: 0.9rem;
-  color: #999;
-  animation: fadeIn 1s ease 0.4s both;
-}
-
-/* --- Animations --- */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.project-video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(143, 68, 
