@@ -450,3 +450,25 @@ footer {
     height: 200px;
   }
 }
+
+/* --- Gameplay Link Styling --- */
+.project-media .video-caption a {
+  font-family: "Poppins", sans-serif; /* Match page font */
+  color: #44fd8f;                     /* Match the accent color of Nature's Solace */
+  text-decoration: none;               /* Remove underline */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.project-media .video-caption a:hover {
+  color: #00ffc3;                     /* Slightly different shade on hover */
+  text-decoration: underline;         /* Optional: underline on hover */
+}
+
+.project-media .video-caption {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #bdf9d8;                     /* Subtle text color to match page theme */
+  text-align: center;
+  margin-top: 0.5rem;
+}
