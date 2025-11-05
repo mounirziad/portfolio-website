@@ -127,6 +127,7 @@ header {
   font-weight: 500;
   letter-spacing: 0.5px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 0.5rem; /* added spacing above buttons */
 }
 
 .btn:hover {
@@ -173,11 +174,12 @@ header {
   color: #fff;
 }
 
+/* --- Project Cards --- */
 .project-card {
   background: #18181d;
   padding: 2rem;
   border-radius: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem; /* increased spacing between cards */
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   opacity: 0;
@@ -191,13 +193,14 @@ header {
 }
 
 .project-card h3 {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem; /* slightly more spacing between title and paragraph */
   color: #fff;
   font-size: 1.45rem;
 }
 
 .project-card p {
   color: #c0c0c0;
+  margin-bottom: 1.5rem; /* spacing between paragraph and button */
 }
 
 /* --- Project Pages --- */
@@ -379,6 +382,7 @@ footer {
   .video-wrapper iframe { height: 200px; }
 }
 
+/* --- Project Repo Section --- */
 .project-repo {
   margin-top: 2rem;
 }
@@ -399,4 +403,3 @@ footer {
 .project-repo a:hover {
   color: #8f44fd;
 }
-
