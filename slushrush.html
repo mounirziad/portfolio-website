@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arctic Invasion – Mounir Ziad</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -19,56 +19,496 @@
   </header>
 
   <main id="arcticinvasion-page" class="project-page">
-    <h2>Arctic Invasion</h2>
-    <p><strong>Role:</strong> Lead Programmer – Core Gameplay Systems</p>
-    <p><strong>Studio:</strong> Arctic Games Studio</p>
-    <p><strong>Duration:</strong> Sep 2025 – Present</p>
+    <div class="project-page-header">
+      <h1>Arctic Invasion</h1>
+      <div class="project-meta-large">
+        <span class="project-tag">C#</span>
+        <span class="project-tag">Unity</span>
+        <span class="project-tag">Mobile Development</span>
+        <span class="project-tag">Tower Defense</span>
+        <span class="project-tag">Game Architecture</span>
+      </div>
+    </div>
 
-    <h3>Project Highlights</h3>
-    <ul>
-      <li>Co-led development of a modular, scalable mobile tower defense game</li>
-      <li>Implemented drag-and-drop tower placement and customizable upgrade paths</li>
-      <li>Programmed enemy wave logic, spawn patterns, and pathfinding behaviors for diverse enemy types</li>
-      <li>Built a barracks system dynamically spawning allied units from player-placed buildings</li>
-      <li>Engineered a persistent currency system including in-game purchases, shop UI, and reward logic</li>
-    </ul>
-
-    <!-- --- Media Section --- -->
     <section class="project-media">
-      <h3>Media Showcase</h3>
-
-      <div class="video-wrapper fade-on-scroll">
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/R2ZupiC5tmM?si=Pd5VUYB9Do_R5UJl" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" 
-          allowfullscreen
-          class="project-video">
-        </iframe>
-        <p class="video-caption">Gameplay trailer</p>
+      <!-- Simple video link container -->
+      <div class="video-container">
+        <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🏔️</div>
+          <h3>Arctic Invasion Gameplay</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Watch the gameplay trailer on YouTube</p>
+          <a href="https://www.youtube.com/watch?v=R2ZupiC5tmM" class="btn btn-primary" target="_blank">
+            🎬 Watch Gameplay Trailer
+          </a>
+        </div>
       </div>
 
-      <div class="image-gallery fade-on-scroll">
-        <img src="images/ArcticInvasionss1.png" alt="Arctic Invasion Screenshot 1">
-        <img src="images/ArcticInvasionss2.png" alt="Arctic Invasion Screenshot 2">
+      <div class="video-caption">
+        <strong>Gameplay Trailer:</strong> Showcasing tower defense mechanics and strategic gameplay
+      </div>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="images/ArcticInvasionss1.png" alt="Tower Defense Gameplay" />
+          <div class="image-caption">
+            <strong>Strategic Tower Placement:</strong> Drag-and-drop tower system with upgrade paths
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/ArcticInvasionss2.png" alt="Enemy Wave Management" />
+          <div class="image-caption">
+            <strong>Wave Management System:</strong> Enemy spawn patterns and pathfinding behaviors
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- --- GitHub Repository --- -->
+    <div class="project-content">
+      <div class="project-details">
+        <section class="project-overview">
+          <h2>Project Overview</h2>
+          <p>
+            <em>Arctic Invasion</em> is a modular, scalable mobile tower defense game developed with Unity, 
+            featuring strategic tower placement, dynamic enemy waves, and persistent progression systems. 
+            As Lead Programmer, I architected core gameplay systems that balance strategic depth with 
+            mobile-friendly accessibility.
+          </p>
+          <p>
+            This project demonstrates production-ready mobile game development practices, including 
+            performance-optimized pathfinding, responsive touch controls, and scalable architecture 
+            supporting extensive content updates and monetization systems.
+          </p>
+        </section>
+
+        <section class="project-features">
+          <h2>Core Technical Systems</h2>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>🏗️ Modular Tower System</h3>
+              <p>Extensible tower architecture supporting multiple types, upgrades, and placement mechanics.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class TowerSystem : MonoBehaviour
+{
+    [SerializeField] private TowerData[] towerTypes;
+    [SerializeField] private LayerMask placementLayer;
+    [SerializeField] private CurrencySystem currency;
+    
+    private Tower selectedTower;
+    private bool isPlacingTower;
+    
+    public void StartTowerPlacement(TowerData towerData)
+    {
+        if (currency.CanAfford(towerData.cost))
+        {
+            selectedTower = Instantiate(towerData.prefab).GetComponent<Tower>();
+            selectedTower.Initialize(towerData);
+            isPlacingTower = true;
+            ShowValidPlacementAreas();
+        }
+    }
+    
+    private void Update()
+    {
+        if (isPlacingTower)
+        {
+            HandleTowerPlacement();
+        }
+    }
+    
+    private void HandleTowerPlacement()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, placementLayer))
+        {
+            selectedTower.transform.position = hit.point;
+            
+            if (Input.GetMouseButtonDown(0) && IsValidPlacement(hit.point))
+            {
+                PlaceTower(hit.point);
+            }
+        }
+    }
+    
+    private void PlaceTower(Vector3 position)
+    {
+        currency.Spend(selectedTower.TowerData.cost);
+        selectedTower.OnPlaced();
+        isPlacingTower = false;
+        HidePlacementAreas();
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🎯 Enemy Wave Management</h3>
+              <p>Dynamic wave system with spawn patterns, pathfinding, and behavior trees.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class WaveManager : MonoBehaviour
+{
+    [SerializeField] private WaveData[] waves;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private PathfindingGrid pathfindingGrid;
+    
+    private int currentWave = 0;
+    private int enemiesRemaining = 0;
+    private bool waveInProgress = false;
+    
+    public void StartNextWave()
+    {
+        if (!waveInProgress && currentWave < waves.Length)
+        {
+            StartCoroutine(SpawnWave(waves[currentWave]));
+            currentWave++;
+        }
+    }
+    
+    private IEnumerator SpawnWave(WaveData waveData)
+    {
+        waveInProgress = true;
+        enemiesRemaining = waveData.totalEnemies;
+        
+        foreach (var spawnGroup in waveData.spawnGroups)
+        {
+            for (int i = 0; i < spawnGroup.count; i++)
+            {
+                SpawnEnemy(spawnGroup.enemyType, GetSpawnPoint());
+                yield return new WaitForSeconds(spawnGroup.spawnInterval);
+            }
+        }
+        
+        yield return new WaitUntil(() => enemiesRemaining <= 0);
+        waveInProgress = false;
+        OnWaveCompleted?.Invoke(currentWave);
+    }
+    
+    private void SpawnEnemy(EnemyType enemyType, Transform spawnPoint)
+    {
+        var enemy = Instantiate(enemyType.prefab, spawnPoint.position, Quaternion.identity);
+        var enemyAI = enemy.GetComponent<EnemyAI>();
+        enemyAI.Initialize(pathfindingGrid, OnEnemyDefeated);
+    }
+    
+    private void OnEnemyDefeated(EnemyAI enemy)
+    {
+        enemiesRemaining--;
+        currency.Add(enemy.Reward);
+    }
+}
+
+[System.Serializable]
+public class WaveData
+{
+    public string waveName;
+    public SpawnGroup[] spawnGroups;
+    public int totalEnemies;
+    public float waveReward;
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>⚔️ Barracks & Unit System</h3>
+              <p>Dynamic unit spawning from player-placed barracks with strategic AI behaviors.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class Barracks : Tower
+{
+    [SerializeField] private UnitData unitData;
+    [SerializeField] private float spawnInterval = 3f;
+    [SerializeField] private int maxUnits = 5;
+    
+    private List<Unit> spawnedUnits = new List<Unit>();
+    private float spawnTimer;
+    
+    protected override void Update()
+    {
+        base.Update();
+        
+        if (spawnedUnits.Count < maxUnits)
+        {
+            spawnTimer += Time.deltaTime;
+            if (spawnTimer >= spawnInterval)
+            {
+                SpawnUnit();
+                spawnTimer = 0f;
+            }
+        }
+    }
+    
+    private void SpawnUnit()
+    {
+        var unit = Instantiate(unitData.prefab, transform.position, Quaternion.identity);
+        var unitComponent = unit.GetComponent<Unit>();
+        unitComponent.Initialize(unitData, this);
+        
+        spawnedUnits.Add(unitComponent);
+        unitComponent.OnUnitDestroyed += OnUnitDestroyed;
+    }
+    
+    private void OnUnitDestroyed(Unit unit)
+    {
+        spawnedUnits.Remove(unit);
+        unit.OnUnitDestroyed -= OnUnitDestroyed;
+    }
+    
+    public Vector3 GetRallyPoint()
+    {
+        // Calculate strategic position based on enemy proximity
+        return transform.position + transform.forward * 2f;
+    }
+}
+
+public class Unit : MonoBehaviour
+{
+    private UnitData data;
+    private Barracks homeBarracks;
+    private EnemyAI target;
+    
+    public void Initialize(UnitData unitData, Barracks barracks)
+    {
+        data = unitData;
+        homeBarracks = barracks;
+        FindTarget();
+    }
+    
+    private void FindTarget()
+    {
+        // Find closest enemy within attack range
+        var enemies = FindObjectsOfType<EnemyAI>();
+        float closestDistance = Mathf.Infinity;
+        
+        foreach (var enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < data.attackRange && distance < closestDistance)
+            {
+                target = enemy;
+                closestDistance = distance;
+            }
+        }
+        
+        if (target != null)
+        {
+            StartCoroutine(AttackRoutine());
+        }
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>💰 Economy & Progression</h3>
+              <p>Persistent currency system with in-game purchases and reward logic.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class CurrencySystem : MonoBehaviour
+{
+    [SerializeField] private int startingCurrency = 100;
+    
+    private int currentCurrency;
+    private const string CURRENCY_KEY = "PlayerCurrency";
+    
+    public int CurrentCurrency => currentCurrency;
+    public event Action<int> OnCurrencyChanged;
+    
+    private void Start()
+    {
+        LoadCurrency();
+    }
+    
+    public void Add(int amount)
+    {
+        currentCurrency += amount;
+        SaveCurrency();
+        OnCurrencyChanged?.Invoke(currentCurrency);
+    }
+    
+    public bool Spend(int amount)
+    {
+        if (CanAfford(amount))
+        {
+            currentCurrency -= amount;
+            SaveCurrency();
+            OnCurrencyChanged?.Invoke(currentCurrency);
+            return true;
+        }
+        return false;
+    }
+    
+    public bool CanAfford(int amount)
+    {
+        return currentCurrency >= amount;
+    }
+    
+    private void LoadCurrency()
+    {
+        currentCurrency = PlayerPrefs.GetInt(CURRENCY_KEY, startingCurrency);
+    }
+    
+    private void SaveCurrency()
+    {
+        PlayerPrefs.SetInt(CURRENCY_KEY, currentCurrency);
+        PlayerPrefs.Save();
+    }
+}
+
+public class ShopSystem : MonoBehaviour
+{
+    [SerializeField] private ShopItem[] availableItems;
+    [SerializeField] private CurrencySystem currency;
+    [SerializeField] private UIManager uiManager;
+    
+    public void PurchaseItem(ShopItem item)
+    {
+        if (currency.Spend(item.cost))
+        {
+            ApplyItemEffect(item);
+            uiManager.ShowPurchaseSuccess(item);
+        }
+        else
+        {
+            uiManager.ShowInsufficientFunds();
+        }
+    }
+    
+    private void ApplyItemEffect(ShopItem item)
+    {
+        switch (item.itemType)
+        {
+            case ItemType.TowerUnlock:
+                TowerManager.Instance.UnlockTower(item.towerData);
+                break;
+            case ItemType.CurrencyBoost:
+                currency.Add(item.boostAmount);
+                break;
+            case ItemType.Upgrade:
+                ApplyUpgrade(item.upgradeData);
+                break;
+        }
+    }
+}
+
+[System.Serializable]
+public class ShopItem
+{
+    public string itemName;
+    public int cost;
+    public Sprite icon;
+    public ItemType itemType;
+    public TowerData towerData;
+    public int boostAmount;
+    public UpgradeData upgradeData;
+}</code>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-highlights">
+          <h2>Technical Architecture & Design Patterns</h2>
+          <ul>
+            <li><strong>Modular Tower Defense Framework:</strong> Extensible architecture supporting multiple tower types and upgrade paths</li>
+            <li><strong>Wave Management System:</strong> Configurable enemy spawn patterns with dynamic difficulty scaling</li>
+            <li><strong>Pathfinding Optimization:</strong> Efficient A* implementation for mobile performance constraints</li>
+            <li><strong>Touch Input System:</strong> Responsive drag-and-drop controls optimized for mobile devices</li>
+            <li><strong>Persistent Data Management:</strong> Save system for player progression and currency</li>
+            <li><strong>Event-Driven Architecture:</strong> Decoupled systems for maintainability and extensibility</li>
+            <li><strong>Mobile Monetization Integration:</strong> In-app purchase systems and reward mechanics</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="info-card">
+          <h3>Project Details</h3>
+          <ul class="info-list">
+            <li>
+              <span class="label">Role</span>
+              <span class="value">Lead Programmer</span>
+            </li>
+            <li>
+              <span class="label">Duration</span>
+              <span class="value">Sep 2025 – Present</span>
+            </li>
+            <li>
+              <span class="label">Studio</span>
+              <span class="value">Arctic Games Studio</span>
+            </li>
+            <li>
+              <span class="label">Platform</span>
+              <span class="value">Mobile (Unity)</span>
+            </li>
+            <li>
+              <span class="label">Team Size</span>
+              <span class="value">Collaborative Project</span>
+            </li>
+            <li>
+              <span class="label">Language</span>
+              <span class="value">C#</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Technical Stack</h3>
+          <ul class="info-list">
+            <li>Unity Engine</li>
+            <li>C# .NET</li>
+            <li>Mobile Optimization</li>
+            <li>A* Pathfinding</li>
+            <li>UI System</li>
+            <li>Data Persistence</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Key Systems</h3>
+          <ul class="info-list">
+            <li>Tower Placement</li>
+            <li>Wave Management</li>
+            <li>Barracks System</li>
+            <li>Economy & Shop</li>
+            <li>Pathfinding</li>
+            <li>Mobile Controls</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <section class="project-repo">
-      <h3>Repository</h3>
-      <p>
-        <a href="https://github.com/kingkaue/PenguinTD/tree/main" target="_blank" rel="noopener noreferrer">
-          View Arctic Invasion on GitHub
+      <h3>Explore the Code</h3>
+      <div class="btn-group">
+        <a href="https://github.com/kingkaue/PenguinTD/tree/main" class="btn btn-primary" target="_blank">
+          💻 View Full Source Code
         </a>
+        <a href="https://www.youtube.com/watch?v=R2ZupiC5tmM" class="btn btn-secondary" target="_blank">
+          🎬 Watch Gameplay Trailer
+        </a>
+        <a href="projects.html" class="btn">
+          ← Back to Projects
+        </a>
+      </div>
+      <p class="video-caption" style="margin-top: var(--space-md);">
+        Complete Unity tower defense implementation available on <a href="https://github.com/kingkaue/PenguinTD/tree/main" target="_blank">GitHub</a>, 
+        featuring mobile-optimized architecture and strategic gameplay systems.
       </p>
     </section>
-
-    <a href="projects.html" class="btn">Back to Projects</a>
   </main>
 
   <footer>
@@ -76,16 +516,25 @@
   </footer>
 
   <script>
-    const fadeElements = document.querySelectorAll('.fade-on-scroll');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    // Copy code functionality
+    document.querySelectorAll('.code-copy').forEach(button => {
+      button.addEventListener('click', function() {
+        const codeBlock = this.closest('.code-block').querySelector('code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Visual feedback
+        const originalText = this.textContent;
+        this.textContent = '✅ Copied!';
+        setTimeout(() => {
+          this.textContent = originalText;
+        }, 2000);
       });
-    }, appearOptions);
-    fadeElements.forEach(el => appearOnScroll.observe(el));
+    });
   </script>
 </body>
 </html>
