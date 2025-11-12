@@ -34,10 +34,13 @@
     <section class="project-media">
       <div class="video-container">
         <iframe 
-          src="https://www.youtube.com/embed/s6VDMcdXiTk"
-          title="Tetris Reimagined Gameplay"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/s6VDMcdXiTk?si=ENBKFwS2QzCXFF2V" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
           allowfullscreen>
         </iframe>
         <div class="video-caption">
@@ -322,137 +325,6 @@ public:
 };</code>
               </div>
             </div>
-
-            <div class="feature-card">
-              <h3>📊 Scoring & Level Progression</h3>
-              <p>Comprehensive scoring system with modern Tetris guidelines.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C++</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>class ScoringSystem {
-private:
-    int score;
-    int linesCleared;
-    int level;
-    int pointsPerLine;
-    
-public:
-    void clearLines() {
-        int linesClearedThisTurn = 0;
-        
-        for (int y = GRID_HEIGHT - 1; y >= 0; y--) {
-            bool lineComplete = true;
-            
-            for (int x = 0; x < GRID_WIDTH; x++) {
-                if (grid[y][x] == 0) {
-                    lineComplete = false;
-                    break;
-                }
-            }
-            
-            if (lineComplete) {
-                removeLine(y);
-                linesClearedThisTurn++;
-                y++; // Recheck same position after shift
-            }
-        }
-        
-        if (linesClearedThisTurn > 0) {
-            addScore(linesClearedThisTurn);
-            linesCleared += linesClearedThisTurn;
-            level = linesCleared / 10 + 1;
-        }
-    }
-
-    void addScore(int lines) {
-        // Modern Tetris scoring
-        int basePoints = 0;
-        switch (lines) {
-            case 1: basePoints = 100; break;
-            case 2: basePoints = 300; break;
-            case 3: basePoints = 500; break;
-            case 4: basePoints = 800; break; // Tetris!
-        }
-        
-        score += basePoints * level;
-    }
-
-    void removeLine(int lineY) {
-        // Shift all lines above down
-        for (int y = lineY; y > 0; y--) {
-            for (int x = 0; x < GRID_WIDTH; x++) {
-                grid[y][x] = grid[y - 1][x];
-            }
-        }
-        
-        // Clear top line
-        for (int x = 0; x < GRID_WIDTH; x++) {
-            grid[0][x] = 0;
-        }
-    }
-};</code>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <h3>🎮 Main Game Loop Architecture</h3>
-              <p>Optimized real-time game loop with fixed time steps and frame rate independence.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C++</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>void Game::run() {
-    const double targetFrameTime = 1.0 / 60.0; // 60 FPS
-    double accumulator = 0.0;
-    double currentTime = GetTime();
-    
-    while (!WindowShouldClose()) {
-        double newTime = GetTime();
-        double frameTime = newTime - currentTime;
-        currentTime = newTime;
-        
-        // Prevent spiral of death
-        if (frameTime > 0.25) {
-            frameTime = 0.25;
-        }
-        
-        accumulator += frameTime;
-        
-        // Input handling (always processed)
-        handleInput();
-        
-        // Fixed time step updates
-        while (accumulator >= targetFrameTime) {
-            update(targetFrameTime);
-            accumulator -= targetFrameTime;
-        }
-        
-        // Rendering with interpolation
-        const double alpha = accumulator / targetFrameTime;
-        render(alpha);
-    }
-}
-
-void Game::update(double deltaTime) {
-    if (!gameOver) {
-        // Update gravity system
-        gravitySystem.update(deltaTime);
-        
-        // Update obstacles
-        obstacleSystem.update(deltaTime);
-        
-        // Update current piece
-        currentPiece.update(deltaTime);
-        
-        // Check for line clears
-        scoringSystem.clearLines();
-    }
-}</code>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -521,17 +393,6 @@ void Game::update(double deltaTime) {
             <li>Modern Scoring</li>
             <li>Smooth Animations</li>
             <li>Adaptive Difficulty</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>Performance Metrics</h3>
-          <ul class="info-list">
-            <li>60 FPS Target</li>
-            <li>Frame-time: < 16ms</li>
-            <li>Memory: < 10MB</li>
-            <li>Input Lag: < 2 frames</li>
-            <li>Load Time: Instant</li>
           </ul>
         </div>
       </div>
