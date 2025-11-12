@@ -32,21 +32,22 @@
 
     <!-- IMAGES MOVED TO TOP -->
     <section class="project-media">
-     <div class="video-container">
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/s6VDMcdXiTk" 
-    title="Tetris Reimagined Gameplay" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen
-    loading="lazy">
-  </iframe>
-  <div class="video-caption">
-    <strong>Gameplay Showcase:</strong> Experience the gravity-shifting mechanics and dynamic blockades in action
-  </div>
-</div>
+      <!-- Updated YouTube container for dynamic loading -->
+      <div class="video-container" id="youtube-container">
+        <!-- Fallback content that shows immediately -->
+        <div class="video-fallback" style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🎮</div>
+          <h3>Tetris Reimagined Gameplay</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Loading video...</p>
+          <a href="https://www.youtube.com/watch?v=s6VDMcdXiTk" class="btn btn-primary" target="_blank" id="youtube-fallback-link" style="display: none;">
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="video-caption">
+        <strong>Gameplay Showcase:</strong> Experience the gravity-shifting mechanics and dynamic blockades in action
+      </div>
 
       <div class="image-gallery">
         <div class="gallery-item">
@@ -443,10 +444,8 @@ public:
       });
     });
   </script>
+
+  <!-- Load the external JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
