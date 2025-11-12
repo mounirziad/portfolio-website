@@ -32,14 +32,14 @@
 
     <!-- IMAGES MOVED TO TOP -->
     <section class="project-media">
-      <!-- Simple YouTube container -->
-      <div class="video-container" id="youtube-container">
-        <div class="video-placeholder" style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
+      <!-- Simple video link container -->
+      <div class="video-container">
+        <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
           <div style="font-size: 3rem; margin-bottom: var(--space-md);">🎮</div>
           <h3>Tetris Reimagined Gameplay</h3>
-          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);" id="video-status">Loading video...</p>
-          <a href="https://www.youtube.com/watch?v=s6VDMcdXiTk" class="btn btn-primary" target="_blank" id="youtube-fallback-link" style="display: none;">
-            Watch on YouTube
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Watch the gameplay demonstration on YouTube</p>
+          <a href="https://www.youtube.com/watch?v=s6VDMcdXiTk" class="btn btn-primary" target="_blank">
+            🎬 Watch Gameplay Video
           </a>
         </div>
       </div>
@@ -441,130 +441,6 @@ public:
           this.textContent = originalText;
         }, 2000);
       });
-    });
-
-    // YouTube error handling with timeout fallback
-    document.addEventListener('DOMContentLoaded', function() {
-      const youtubeContainer = document.getElementById('youtube-container');
-      const videoStatus = document.getElementById('video-status');
-      const fallbackLink = document.getElementById('youtube-fallback-link');
-      
-      if (youtubeContainer && videoStatus) {
-        let fallbackShown = false;
-        
-        const showFallback = () => {
-          if (fallbackShown) return;
-          fallbackShown = true;
-          
-          console.log('Showing YouTube fallback');
-          youtubeContainer.innerHTML = `
-            <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
-              <div style="font-size: 3rem; margin-bottom: var(--space-md);">⚠️</div>
-              <h3>Video Unavailable</h3>
-              <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">The embedded video could not be loaded due to privacy restrictions.</p>
-              <a href="https://www.youtube.com/watch?v=s6VDMcdXiTk" class="btn btn-primary" target="_blank">
-                Watch on YouTube
-              </a>
-            </div>
-          `;
-        };
-
-        // Update status message
-        videoStatus.textContent = 'Attempting to load embedded video...';
-
-        // Create iframe
-        const iframe = document.createElement('iframe');
-        iframe.width = '560';
-        iframe.height = '315';
-        iframe.src = 'https://www.youtube.com/embed/s6VDMcdXiTk';
-        iframe.title = 'Tetris Reimagined Gameplay';
-        iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
-        iframe.loading = 'lazy';
-        iframe.style.borderRadius = 'var(--radius-md)';
-        
-        // Replace placeholder with iframe
-        youtubeContainer.innerHTML = '';
-        youtubeContainer.appendChild(iframe);
-        
-        // Method 1: Timeout fallback (primary method)
-        const youtubeTimeout = setTimeout(() => {
-          console.log('YouTube embed timeout - showing fallback');
-          showFallback();
-        }, 4000); // 4 second timeout
-        
-        // Method 2: Check iframe dimensions periodically
-        const errorCheckInterval = setInterval(() => {
-          if (fallbackShown) {
-            clearInterval(errorCheckInterval);
-            return;
-          }
-          
-          // If iframe has very small dimensions, it's likely showing an error
-          const rect = iframe.getBoundingClientRect();
-          if (rect.height < 50 || rect.width < 50) {
-            console.log('YouTube iframe appears to have error dimensions');
-            showFallback();
-            clearInterval(errorCheckInterval);
-          }
-        }, 1000);
-        
-        // Clear intervals if iframe loads successfully
-        iframe.addEventListener('load', () => {
-          console.log('YouTube iframe load event fired');
-          clearTimeout(youtubeTimeout);
-          clearInterval(errorCheckInterval);
-          
-          // Double-check after a moment if the iframe is actually working
-          setTimeout(() => {
-            if (!fallbackShown) {
-              const rect = iframe.getBoundingClientRect();
-              if (rect.height < 100) {
-                console.log('YouTube iframe loaded but has small height - likely error');
-                showFallback();
-              }
-            }
-          }, 2000);
-        });
-        
-        // Standard error event (may not fire for YouTube errors)
-        iframe.addEventListener('error', () => {
-          console.error('YouTube iframe standard error event');
-          clearTimeout(youtubeTimeout);
-          clearInterval(errorCheckInterval);
-          showFallback();
-        });
-
-        // Method 3: MutationObserver to detect YouTube error messages
-        const observer = new MutationObserver((mutations) => {
-          if (fallbackShown) return;
-          
-          mutations.forEach((mutation) => {
-            const content = youtubeContainer.textContent.toLowerCase();
-            if (content.includes('error') || content.includes('unavailable') || content.includes('restricted')) {
-              console.log('Detected YouTube error text in container');
-              showFallback();
-              observer.disconnect();
-            }
-          });
-        });
-        
-        observer.observe(youtubeContainer, {
-          childList: true,
-          subtree: true,
-          characterData: true
-        });
-
-        // Stop all checks after 10 seconds max
-        setTimeout(() => {
-          if (!fallbackShown) {
-            clearTimeout(youtubeTimeout);
-            clearInterval(errorCheckInterval);
-            observer.disconnect();
-          }
-        }, 10000);
-      }
     });
   </script>
 </body>
