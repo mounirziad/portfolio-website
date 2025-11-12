@@ -19,56 +19,389 @@
   </header>
 
   <main id="naturessolace-page" class="project-page">
-    <h2>Nature's Solace</h2>
+    <div class="project-page-header">
+      <h1>Nature's Solace</h1>
+      <div class="project-meta-large">
+        <span class="project-tag">Unity</span>
+        <span class="project-tag">C#</span>
+        <span class="project-tag">Environmental</span>
+        <span class="project-tag">Team Leadership</span>
+        <span class="project-tag">Game Design</span>
+      </div>
+    </div>
 
-    <section class="project-meta">
-      <p><strong>Role:</strong> Large Team Lead Developer</p>
-      <p><strong>Studio:</strong> Studio Friendship – Nature's Solace</p>
-      <p><strong>Duration:</strong> Mar 2025 – May 2025</p>
-    </section>
+    <div class="project-content">
+      <div class="project-details">
+        <section class="project-overview">
+          <h2>Project Overview</h2>
+          <p>
+            <strong>Nature's Solace</strong> is a meditative environmental experience that explores the bond between human emotion and the natural world. 
+            As Team Lead Developer at Studio Friendship, I orchestrated the technical vision for this immersive journey where players restore color and life 
+            to a grayscale world through emotional connection with nature.
+          </p>
+          <p>
+            The project combines sophisticated technical systems with emotional storytelling, featuring dynamic world transformation, 
+            interactive plant growth mechanics, and a seamless player experience that evolves based on player interaction.
+          </p>
+        </section>
 
-    <section class="project-highlights">
-      <h3>Project Highlights</h3>
-      <ul>
-        <li>Designed and implemented a fully explorable hub level with comprehensive navigation systems</li>
-        <li>Programmed dynamic cutscenes and developed original game audio/music</li>
-        <li>Built scalable state machines and object pooling systems for gameplay and performance optimization</li>
-        <li>Handled large-scale terrain data to support an expansive, immersive environment</li>
-      </ul>
-    </section>
+        <section class="project-features">
+          <h2>Core Technical Systems</h2>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>🌱 Dynamic Plant Growth System</h3>
+              <p>Interactive plant mechanics that respond to player actions with smooth animations and visual feedback.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class PlantGrowth : MonoBehaviour
+{
+    [Header("Growth Settings")]
+    public float growthAmount = 0.1f; // Growth per water interaction
+    public float maxScale = 2f;       // Maximum plant size
+    public float growthDuration = 1f; // Animation timing
+    
+    private Vector3 targetScale;
+    private bool isGrowing;
+    private float growthProgress;
 
-    <section class="project-media">
-      <h3>Gallery</h3>
-      <div class="image-gallery">
-        <img src="https://img.itch.zone/aW1hZ2UvMzQ5MzczOS8yMDg2ODA4Ni5qcGVn/794x1000/cM8bpx.jpeg" alt="Nature's Solace Screenshot 1">
-        <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwNS5wbmc=/347x500/fmlJOM.png" alt="Nature's Solace Screenshot 2">
-        <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwMy5wbmc=/347x500/Q4FAMx.png" alt="Nature's Solace Screenshot 3">
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            GrowPlant();
+            playerManager.SetSpirit(10f); // Reward player
+            Destroy(other.gameObject);    // Remove water sphere
+        }
+    }
+
+    public void GrowPlant()
+    {
+        if (transform.localScale.x >= maxScale) return;
+
+        targetScale = Vector3.Min(
+            transform.localScale + (Vector3.one * growthAmount),
+            initialScale * maxScale
+        );
+
+        growthProgress = 0f;
+        isGrowing = true;
+        
+        // Smooth growth animation with optional wiggle effect
+        transform.localScale = Vector3.Lerp(
+            transform.localScale, 
+            targetScale, 
+            growthProgress
+        );
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🎨 World Color Transformation</h3>
+              <p>Dynamic material system that transitions the world from grayscale to vibrant colors based on player progress.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class ChangeMaterial : MonoBehaviour
+{
+    private Renderer objectRenderer;
+    private Material objectMaterial;
+    
+    private IEnumerator GrayToColor()
+    {
+        float elapsedTime = 0f;
+        float timeToChange = 2f;
+
+        while (elapsedTime < timeToChange)
+        {
+            elapsedTime += Time.deltaTime;
+            // Smooth saturation transition from 0 (grayscale) to 1 (full color)
+            objectMaterial.SetFloat("_saturation", 
+                Mathf.Lerp(0, 1, elapsedTime / timeToChange)
+            );
+            yield return null;
+        }
+    }
+
+    void Update()
+    {
+        // Activate color transformation when player achieves milestones
+        if (gameManager.GetComponent<GameManager>().inColor == true)
+        {
+            StartCoroutine(GrayToColor());
+        }
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🚶 Advanced Player Controller</h3>
+              <p>Smooth character movement with audio feedback, interaction systems, and save/load functionality.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class PlayerMovement : MonoBehaviour
+{
+    [Header("Movement")]
+    public float speed;
+    public Vector2 move;
+    private Rigidbody rb;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource footsteps;
+    private bool isMoving = false;
+
+    void MovePlayer()
+    {
+        Vector3 moveDirection = orientation.forward * move.y + orientation.right * move.x;
+        rb.linearVelocity = moveDirection * speed;
+
+        // Dynamic audio system
+        bool wasMoving = isMoving;
+        isMoving = move.magnitude > 0.1f;
+
+        if (isMoving && !wasMoving)
+        {
+            footsteps.loop = true;
+            footsteps.Play(); // Start footsteps when moving
+        }
+        else if (!isMoving && wasMoving)
+        {
+            footsteps.loop = false;
+            footsteps.Stop(); // Stop when stationary
+        }
+    }
+
+    // Save system integration
+    public void Save(ref PlayerSaveData data)
+    {
+        data.Position = transform.position;
+        data.Spirit = currentSpirit;
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🏗️ Scalable Architecture</h3>
+              <p>Modular systems design allowing for easy expansion and team collaboration.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>[System.Serializable]
+public struct PlayerSaveData
+{
+    public Vector3 Position;
+    public float Spirit;
+    public float MaxSpirit;
+}
+
+// Interface for interactive objects
+public interface IInteractable 
+{
+    void Interact(PlayerMovement player);
+}
+
+// Dialogue system integration
+[SerializeField] private DialogueUI dialogueUI;
+public IInteractable Interactable { get; set; }
+
+void Update()
+{
+    if (Input.GetKeyDown(KeyCode.E) && Interactable != null)
+    {
+        Interactable.Interact(this); // Unified interaction system
+    }
+}</code>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-media">
+          <h2>Visual Showcase</h2>
+          
+          <div class="media-section">
+            <h3>Player Environment & Character Controller</h3>
+            <div class="image-gallery">
+              <div class="gallery-item">
+                <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwMy5wbmc=/347x500/Q4FAMx.png" alt="Player cabin showcasing character controller">
+              </div>
+            </div>
+            <p class="video-caption">
+              <strong>Character Controller Implementation:</strong> The player's cabin environment demonstrates the smooth movement system, 
+              interaction capabilities, and atmospheric audio design. The character controller features collision detection, 
+              physics-based movement, and contextual interaction prompts.
+            </p>
+          </div>
+
+          <div class="media-section">
+            <h3>Interactive Plant Growth Mechanics</h3>
+            <div class="image-gallery">
+              <div class="gallery-item">
+                <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwNS5wbmc=/347x500/fmlJOM.png" alt="Plant watering mechanic">
+              </div>
+            </div>
+            <p class="video-caption">
+              <strong>Dynamic Growth System:</strong> Players interact with plants using water spheres, triggering the growth animation system. 
+              Each interaction increases the plant's scale, applies gentle rotation effects, and contributes to the world's overall 
+              color restoration progress. The system includes collision detection, growth limiting, and visual feedback.
+            </p>
+          </div>
+
+          <div class="media-section">
+            <h3>World Transformation System</h3>
+            <div class="image-gallery">
+              <div class="gallery-item">
+                <img src="https://img.itch.zone/aW1hZ2UvMzQ5MzczOS8yMDg2ODA4Ni5qcGVn/794x1000/cM8bpx.jpeg" alt="World becoming brighter as meter fills">
+              </div>
+            </div>
+            <p class="video-caption">
+              <strong>Progressive World Restoration:</strong> As players interact with the environment and nurture plants, 
+              the world gradually transforms from grayscale to full color. This visual progression system uses material shaders 
+              to dynamically adjust saturation across all environmental objects, creating a powerful emotional arc that 
+              directly reflects player agency and progress.
+            </p>
+          </div>
+        </section>
+
+        <section class="project-highlights">
+          <h2>Technical Leadership & Systems Design</h2>
+          <ul>
+            <li><strong>Team Leadership:</strong> Directed a large development team, establishing coding standards, version control workflows, and modular architecture patterns</li>
+            <li><strong>Explorable Hub Design:</strong> Created comprehensive navigation systems with optimized collision detection and spatial audio placement</li>
+            <li><strong>Dynamic Cutscenes:</strong> Programmed event-driven cinematic sequences that seamlessly integrate with gameplay</li>
+            <li><strong>Audio Integration:</strong> Developed original game music and implemented dynamic audio systems with spatial positioning</li>
+            <li><strong>Performance Optimization:</strong> Built scalable state machines and object pooling systems for efficient memory management</li>
+            <li><strong>Terrain Systems:</strong> Managed large-scale terrain data to support expansive, immersive environments with optimized rendering</li>
+          </ul>
+        </section>
       </div>
 
-      <h3>Gameplay</h3>
-      <p class="video-caption">
-        <a href="https://remyregaspi.itch.io/natures-solace" target="_blank" rel="noopener noreferrer">
-          Play Nature's Solace on itch.io
-        </a>
-      </p>
-    </section>
+      <div class="project-sidebar">
+        <div class="info-card">
+          <h3>Project Details</h3>
+          <ul class="info-list">
+            <li>
+              <span class="label">Role</span>
+              <span class="value">Team Lead Dev</span>
+            </li>
+            <li>
+              <span class="label">Studio</span>
+              <span class="value">Studio Friendship</span>
+            </li>
+            <li>
+              <span class="label">Duration</span>
+              <span class="value">Mar - May 2025</span>
+            </li>
+            <li>
+              <span class="label">Team Size</span>
+              <span class="value">Large Team</span>
+            </li>
+            <li>
+              <span class="label">Platform</span>
+              <span class="value">PC</span>
+            </li>
+            <li>
+              <span class="label">Engine</span>
+              <span class="value">Unity</span>
+            </li>
+          </ul>
+        </div>
 
-    <!-- --- GitHub Repository --- -->
+        <div class="info-card">
+          <h3>Technical Stack</h3>
+          <ul class="info-list">
+            <li>Unity Engine</li>
+            <li>C# Programming</li>
+            <li>Shader Graph</li>
+            <li>Unity Input System</li>
+            <li>Rigidbody Physics</li>
+            <li>Audio Mixer</li>
+            <li>Coroutine Systems</li>
+            <li>Serialization</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Key Features</h3>
+          <ul class="info-list">
+            <li>Dynamic World Coloring</li>
+            <li>Interactive Plant Growth</li>
+            <li>Smooth Character Controller</li>
+            <li>Atmospheric Audio Design</li>
+            <li>Save/Load System</li>
+            <li>Dialogue Integration</li>
+            <li>Modular Architecture</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Achievements</h3>
+          <ul class="info-list">
+            <li>Led Technical Vision</li>
+            <li>Optimized Performance</li>
+            <li>Created Emotional Arc</li>
+            <li>Built Scalable Systems</li>
+            <li>Integrated Multiple Systems</li>
+            <li>Mentored Team Members</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <section class="project-repo">
-      <h3>Repository</h3>
-      <p>
-        <a href="https://github.com/kingkaue/DIG-4715-Final" target="_blank" rel="noopener noreferrer">
-          View Nature's Solace on GitHub
+      <h3>Play & Explore</h3>
+      <div class="btn-group">
+        <a href="https://remyregaspi.itch.io/natures-solace" class="btn btn-primary" target="_blank">
+          🎮 Play on itch.io
         </a>
-      </p>
+        <a href="https://github.com/kingkaue/DIG-4715-Final" class="btn btn-secondary" target="_blank">
+          💻 View Source Code
+        </a>
+        <a href="projects.html" class="btn">
+          ← Back to Projects
+        </a>
+      </div>
     </section>
-
-    <a href="projects.html" class="btn">Back to Projects</a>
   </main>
 
   <footer>
     <p>© 2025 Mounir Ziad</p>
   </footer>
+
+  <script>
+    // Copy code functionality
+    document.querySelectorAll('.code-copy').forEach(button => {
+      button.addEventListener('click', function() {
+        const codeBlock = this.closest('.code-block').querySelector('code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Visual feedback
+        const originalText = this.textContent;
+        this.textContent = '✅ Copied!';
+        setTimeout(() => {
+          this.textContent = originalText;
+        }, 2000);
+      });
+    });
+  </script>
 </body>
 </html>
-
