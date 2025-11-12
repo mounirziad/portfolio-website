@@ -30,41 +30,38 @@
       </div>
     </div>
 
-  <section class="project-media">
-  <h3>Media Showcase</h3>
-
-  <div class="video-wrapper fade-on-scroll">
-    <iframe 
-      width="560" 
-      height="315" 
-      src="https://www.youtube.com/embed/g1CCLBe-ao4?si=VYH_z4t8yTuG9S32" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin" 
-      allowfullscreen
-      class="project-video">
-    </iframe>
-    <div class="video-caption">
-      <strong>Gameplay Demonstration:</strong> Showcasing modular combat systems and AI behaviors
-    </div>
-  </div>
-
-  <div class="image-gallery fade-on-scroll">
-    <div class="gallery-item">
-      <img src="images/mechanisoul_screenshot1.png" alt="Modular Combat System Architecture" />
-      <div class="image-caption">
-        <strong>Modular Combat System:</strong> Extensible weapon and ability framework built with ScriptableObjects
+    <section class="project-media">
+      <!-- Simple video link container -->
+      <div class="video-container">
+        <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
+          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🎮</div>
+          <h3>Mechanisoul Gameplay</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Watch the gameplay demonstration on YouTube</p>
+          <a href="https://www.youtube.com/watch?v=g1CCLBe-ao4" class="btn btn-primary" target="_blank">
+            🎬 Watch Gameplay Video
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="gallery-item">
-      <img src="images/mechanisoul_screenshot2.png" alt="AI Agent Configuration System" />
-      <div class="image-caption">
-        <strong>AI Agent Configurations:</strong> Behavior tree implementations and state-driven enemy AI
+
+      <div class="video-caption">
+        <strong>Gameplay Demonstration:</strong> Showcasing modular combat systems and AI behaviors
       </div>
-    </div>
-  </div>
-</section>
+
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <img src="images/mechanisoul_screenshot1.png" alt="Modular Combat System Architecture" />
+          <div class="image-caption">
+            <strong>Modular Combat System:</strong> Extensible weapon and ability framework built with ScriptableObjects
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/mechanisoul_screenshot2.png" alt="AI Agent Configuration System" />
+          <div class="image-caption">
+            <strong>AI Agent Configurations:</strong> Behavior tree implementations and state-driven enemy AI
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="project-content">
       <div class="project-details">
@@ -451,22 +448,6 @@ public class AIConfig
         }, 2000);
       });
     });
-
-    // Scroll animations
-    document.addEventListener('DOMContentLoaded', () => {
-      const fadeElements = document.querySelectorAll('.fade-on-scroll, .project-video');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.3 });
-
-      fadeElements.forEach(el => observer.observe(el));
-    });
   </script>
 </body>
 </html>
-
-
