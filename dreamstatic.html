@@ -5,18 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mechanisoul – Mounir Ziad</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Minimal additions for header and container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">Mounir Ziad</h1>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo-container">
+        <div class="logo">Mounir Ziad</div>
+        <div class="brand">Game Developer</div>
+      </div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html" class="active">Projects</a></li>
       </ul>
-    </nav>
+    </div>
   </header>
+
 
   <main id="mechanisoul-page" class="project-page">
     <div class="project-page-header">
@@ -451,3 +474,4 @@ public class AIConfig
   </script>
 </body>
 </html>
+
