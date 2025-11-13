@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tetris Reimagined – Mounir Ziad</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mounir Ziad | Game Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal additions for indentation */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Keep your existing header layout but add brand */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo-container">
-                <div class="logo">Mounir Ziad</div>
-                <div class="brand">Game Developer</div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-            </ul>
-        </div>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo-container">
+        <div class="logo">Mounir Ziad</div>
+        <div class="brand">Game Developer</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="container hero-content">
       <img src="images/profile.jpg" alt="Mounir Ziad" class="profile-img">
       <h2>Mounir Ziad</h2>
-      <p>I'm a game developer and software engineer passionate about building immersive, modular, and technically robust gameplay systems. I also produce work as a sound designer/composer with over 10 years of musical experience.</p>
+      <p>
+        I'm a game developer and software engineer passionate about building immersive, modular,
+        and technically robust gameplay systems. I also produce work as a sound designer/composer
+        with over 10 years of musical experience.
+      </p>
       <div class="hero-buttons">
         <a href="about.html" class="btn">Learn More</a>
         <a href="https://github.com/mounirziad" class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -44,5 +69,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
