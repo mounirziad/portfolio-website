@@ -26,25 +26,26 @@
         <span class="project-tag">OpenGL</span>
         <span class="project-tag">Entity-Component-System</span>
         <span class="project-tag">PBR Rendering</span>
+        <span class="project-tag">Procedural Terrain</span>
         <span class="project-tag">Real-time 3D</span>
       </div>
     </div>
 
     <section class="project-media">
-      <!-- Simple video link container -->
+      <!-- Updated video link container -->
       <div class="video-container">
         <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
           <div style="font-size: 3rem; margin-bottom: var(--space-md);">🎮</div>
           <h3>Game Engine Demo</h3>
           <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Watch the engine demonstration on YouTube</p>
-          <a href="https://www.youtube.com/watch?v=30M6B1Yz_-M" class="btn btn-primary" target="_blank">
+          <a href="https://www.youtube.com/embed/wg-eQECSZ8E?si=sCkoj9hWJZ7ncjYR" class="btn btn-primary" target="_blank">
             🎬 Watch Engine Demo
           </a>
         </div>
       </div>
 
       <div class="video-caption">
-        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, material system, and ECS architecture
+        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain generation, material system, and ECS architecture
       </div>
     </section>
 
@@ -55,8 +56,9 @@
           <p>
             A professional-grade 3D game engine built entirely from scratch in modern C++. 
             This engine showcases advanced graphics programming techniques, custom Entity-Component-System architecture, 
-            and real-time rendering capabilities. Designed with scalability and performance in mind, it demonstrates 
-            deep understanding of computer graphics, memory management, and software architecture.
+            real-time procedural terrain generation, and sophisticated rendering capabilities. Designed with scalability 
+            and performance in mind, it demonstrates deep understanding of computer graphics, memory management, 
+            and software architecture.
           </p>
         </section>
 
@@ -82,6 +84,27 @@ registry.AddComponent(cube, TransformComponent{
 
 // Type-safe component queries
 auto entities = registry.GetEntitiesWith&lt;TransformComponent, MeshComponent&gt;();</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🏔️ Procedural Terrain Generation</h3>
+              <p>Real-time terrain generation with multi-octave noise, height mapping, and dynamic LOD.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C++</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>// Dynamic terrain generation
+TerrainComponent terrainComp(128, 128, 0.5f, 5.0f);
+terrainSystem.GenerateTerrain(terrainComp);
+
+// Real-time terrain modification
+terrainSystem.RenderTerrain(registry, camera, width, height, lightPos, lightColor);
+
+// Multi-octave noise for realistic hills
+float height = GenerateHeight(x, z, terrain);
+// Combines multiple frequencies for natural terrain</code>
               </div>
             </div>
 
@@ -184,9 +207,10 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0) {
 ImGui::Text("FPS: %.1f (%.2f ms/frame)", fps, frameTimeMs);
 ImGui::Text("GPU Memory: %.2f KB", gpuMemoryUsage / 1024.0f);
 
-// Interactive scene controls
-ImGui::SliderFloat3("Light Position", (float*)&lightPos, -10.0f, 10.0f);
-ImGui::ColorEdit3("Light Color", (float*)&lightColor);</code>
+// Interactive terrain controls
+ImGui::SliderFloat("Height Scale", &terrainHeightScale, 0.1f, 10.0f);
+ImGui::Checkbox("Wireframe", &terrain->wireframe);
+ImGui::Button("Regenerate Terrain");</code>
               </div>
             </div>
           </div>
@@ -195,6 +219,61 @@ ImGui::ColorEdit3("Light Color", (float*)&lightColor);</code>
         <section class="project-media">
           <h2>Technical Implementation</h2>
           
+          <div class="media-section">
+            <h3>Procedural Terrain System</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+                <button class="code-copy">📋 Copy</button>
+              </div>
+              <code>// Advanced terrain generation with multi-octave noise
+float TerrainSystem::GenerateHeight(int x, int z, const TerrainComponent& terrain) {
+    float total = 0.0f;
+    float frequency = 0.01f;
+    float amplitude = 1.0f;
+    float persistence = 0.5f;
+    
+    // 6 octaves for detailed terrain
+    for (int i = 0; i < 6; ++i) {
+        float sampleX = x * frequency;
+        float sampleZ = z * frequency;
+        
+        // Combined noise functions
+        float noise = std::sin(sampleX * 1.0f) * std::cos(sampleZ * 1.0f);
+        noise += 0.5f * std::sin(sampleX * 2.3f + sampleZ * 1.7f);
+        noise += 0.25f * std::sin(sampleX * 4.7f) * std::cos(sampleZ * 3.9f);
+        
+        // Ridge formation for hills
+        float ridgeNoise = 1.0f - std::abs(std::sin(sampleX * 1.5f));
+        noise += 0.3f * ridgeNoise * ridgeNoise;
+        
+        total += noise * amplitude;
+        amplitude *= persistence;
+        frequency *= 2.0f;
+    }
+    
+    return total;
+}
+
+// Real-time terrain regeneration
+void TerrainSystem::GenerateTerrain(TerrainComponent& terrain) {
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+    
+    // Generate heightmap and mesh data
+    for (int z = 0; z < terrain.height; ++z) {
+        for (int x = 0; x < terrain.width; ++x) {
+            float height = GenerateHeight(x, z, terrain);
+            terrain.heightmap[z * terrain.width + x] = height;
+            // Build vertex data with positions, normals, UVs
+        }
+    }
+    
+    SetupTerrainMesh(terrain, vertices, indices);
+}</code>
+            </div>
+          </div>
+
           <div class="media-section">
             <h3>Memory Management & Performance</h3>
             <div class="code-block">
@@ -271,6 +350,10 @@ public:
               <span class="value">ECS</span>
             </li>
             <li>
+              <span class="label">Terrain System</span>
+              <span class="value">Procedural Generation</span>
+            </li>
+            <li>
               <span class="label">Performance</span>
               <span class="value">60+ FPS</span>
             </li>
@@ -297,11 +380,24 @@ public:
           <h3>Key Achievements</h3>
           <ul class="info-list">
             <li>Custom ECS Implementation</li>
+            <li>Procedural Terrain Generation</li>
             <li>PBR Rendering Pipeline</li>
             <li>Dynamic Asset System</li>
             <li>Real-time Material Switching</li>
             <li>Memory-efficient Design</li>
             <li>Professional Architecture</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Terrain Features</h3>
+          <ul class="info-list">
+            <li>Multi-octave Noise</li>
+            <li>Real-time Regeneration</li>
+            <li>Height-based Coloring</li>
+            <li>Wireframe Visualization</li>
+            <li>Dynamic LOD</li>
+            <li>UI Controls</li>
           </ul>
         </div>
       </div>
@@ -313,7 +409,7 @@ public:
         <a href="https://github.com/mounirziad/OPENGL-Game-Engine" class="btn btn-primary" target="_blank">
           💻 View Full Source Code
         </a>
-        <a href="https://www.youtube.com/watch?v=30M6B1Yz_-M" class="btn btn-secondary" target="_blank">
+        <a href="https://www.youtube.com/embed/wg-eQECSZ8E?si=sCkoj9hWJZ7ncjYR" class="btn btn-secondary" target="_blank">
           🎬 Watch Engine Demo
         </a>
         <a href="projects.html" class="btn">
@@ -322,7 +418,7 @@ public:
       </div>
       <p class="video-caption" style="margin-top: var(--space-md);">
         Complete C++ game engine implementation available on <a href="https://github.com/mounirziad/OPENGL-Game-Engine" target="_blank">GitHub</a>, 
-        featuring advanced graphics programming and modern software architecture.
+        featuring advanced graphics programming, procedural terrain generation, and modern software architecture.
       </p>
     </section>
   </main>
