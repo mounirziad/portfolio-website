@@ -5,11 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects – Mounir Ziad</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Keep consistent container layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Consistent header layout */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links .active {
+      font-weight: bold;
+    }
+
+    /* Basic project section formatting */
+    .projects-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 20px;
+    }
+
+    .project-tech {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 4px 8px;
+      background: #222;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <h1 class="logo">Mounir Ziad</h1>
+    <nav class="container">
+      <div class="logo-container">
+        <div class="logo">Mounir Ziad</div>
+        <div class="brand">Game Developer</div>
+      </div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -25,8 +100,8 @@
       <h3>Modern C++ Game Engine</h3>
       <p>
         A custom-built 3D game engine featuring Entity-Component-System architecture, PBR rendering, 
-        dynamic model loading, terrain generation, physics simulation, and real-time material system. Built from scratch with modern OpenGL 
-        and professional-grade C++ architecture.
+        dynamic model loading, terrain generation, physics simulation, and real-time material system. 
+        Built from scratch with modern OpenGL and professional-grade C++ architecture.
       </p>
       <div class="project-tech">
         <span class="tech-tag">C++</span>
@@ -82,11 +157,9 @@
   </main>
 
   <footer>
-    <p>© 2025 Mounir Ziad</p>
+    <div class="container">
+      <p>© 2025 Mounir Ziad</p>
+    </div>
   </footer>
 </body>
 </html>
-
-
-
-
