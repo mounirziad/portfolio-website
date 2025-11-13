@@ -27,6 +27,7 @@
         <span class="project-tag">Entity-Component-System</span>
         <span class="project-tag">PBR Rendering</span>
         <span class="project-tag">Procedural Terrain</span>
+        <span class="project-tag">Physics System</span>
         <span class="project-tag">Real-time 3D</span>
       </div>
     </div>
@@ -45,7 +46,7 @@
       </div>
 
       <div class="video-caption">
-        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain generation, material system, and ECS architecture
+        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain generation, physics simulation, material system, and ECS architecture
       </div>
 
       <!-- Image Gallery -->
@@ -53,13 +54,13 @@
         <div class="gallery-item">
           <img src="images/GEModel, Loading, Cube, Terrain .png" alt="Game Engine with Model Loading, Cube, and Terrain" />
           <div class="image-caption">
-            <strong>Real-time Rendering:</strong> Dynamic model loading, cube with PBR materials, and procedurally generated terrain with advanced lighting
+            <strong>Real-time Rendering & Physics:</strong> Dynamic model loading, cube with PBR materials, procedurally generated terrain with collision detection, and real-time physics simulation
           </div>
         </div>
         <div class="gallery-item">
           <img src="images/GEModel WireFrames.png" alt="Wireframe Visualization of Terrain and Cube" />
           <div class="image-caption">
-            <strong>Wireframe Analysis:</strong> Terrain mesh structure and cube geometry showcasing the underlying ECS architecture and rendering pipeline
+            <strong>Wireframe Analysis:</strong> Terrain mesh structure and cube geometry showcasing the underlying ECS architecture, rendering pipeline, and collision volumes
           </div>
         </div>
       </div>
@@ -72,9 +73,9 @@
           <p>
             A professional-grade 3D game engine built entirely from scratch in modern C++. 
             This engine showcases advanced graphics programming techniques, custom Entity-Component-System architecture, 
-            real-time procedural terrain generation, and sophisticated rendering capabilities. Designed with scalability 
-            and performance in mind, it demonstrates deep understanding of computer graphics, memory management, 
-            and software architecture.
+            real-time procedural terrain generation, sophisticated physics simulation, and advanced rendering capabilities. 
+            Designed with scalability and performance in mind, it demonstrates deep understanding of computer graphics, 
+            physics simulation, memory management, and software architecture.
           </p>
         </section>
 
@@ -100,6 +101,32 @@ registry.AddComponent(cube, TransformComponent{
 
 // Type-safe component queries
 auto entities = registry.GetEntitiesWith&lt;TransformComponent, MeshComponent&gt;();</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>⚡ Advanced Physics System</h3>
+              <p>Real-time physics simulation with gravity, collision detection, and object interactions.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C++</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>// Physics component with mass and forces
+registry.AddComponent(cube, PhysicsComponent(
+  true,  // use gravity
+  1.0f   // mass
+));
+
+// Collision detection system
+void PhysicsSystem::HandleObjectCollisions(Registry& registry) {
+  // Sphere-sphere and box-box collision detection
+  // Mass-based collision resolution
+  // Realistic bounce and friction
+}
+
+// Terrain collision with height mapping
+float terrainHeight = GetTerrainHeightAt(terrain, transform.position.x, transform.position.z);</code>
               </div>
             </div>
 
@@ -223,10 +250,15 @@ vec3 fresnelSchlick(float cosTheta, vec3 F0) {
 ImGui::Text("FPS: %.1f (%.2f ms/frame)", fps, frameTimeMs);
 ImGui::Text("GPU Memory: %.2f KB", gpuMemoryUsage / 1024.0f);
 
-// Interactive terrain controls
-ImGui::SliderFloat("Height Scale", &terrainHeightScale, 0.1f, 10.0f);
-ImGui::Checkbox("Wireframe", &terrain->wireframe);
-ImGui::Button("Regenerate Terrain");</code>
+// Interactive physics controls
+ImGui::Checkbox("Use Gravity", &physics->useGravity);
+ImGui::SliderFloat("Mass", &physics->mass, 0.1f, 10.0f);
+ImGui::SliderFloat("Bounciness", &physics->restitution, 0.0f, 1.0f);
+
+// Cube spawning system
+if (ImGui::Button("Add New Cube")) {
+  Entity newCube = CreateCube(registry, randomPosition, material, VAO);
+}</code>
               </div>
             </div>
           </div>
@@ -235,6 +267,57 @@ ImGui::Button("Regenerate Terrain");</code>
         <section class="project-media">
           <h2>Technical Implementation</h2>
           
+          <div class="media-section">
+            <h3>Advanced Physics System</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+                <button class="code-copy">📋 Copy</button>
+              </div>
+              <code>// Complete physics simulation pipeline
+void PhysicsSystem::Update(Registry& registry, float deltaTime) {
+  // Apply gravity and integrate motion
+  for (auto entity : entities) {
+    if (physics->useGravity && !physics->isGrounded) {
+      physics->velocity += gravity * deltaTime;
+    }
+    transform->position += physics->velocity * deltaTime;
+  }
+  
+  // Handle object-to-object collisions
+  HandleObjectCollisions(registry, entities);
+  
+  // Handle terrain collisions
+  HandleTerrainCollision(registry, entity, transform, physics, collider, terrain);
+}
+
+// Mass-based collision resolution
+void PhysicsSystem::ResolveCollision(TransformComponent& transformA, PhysicsComponent& physicsA,
+                                   TransformComponent& transformB, PhysicsComponent& physicsB,
+                                   const glm::vec3& collisionNormal, float penetrationDepth) {
+  // Separate objects based on mass
+  float totalMass = physicsA.mass + physicsB.mass;
+  float ratioA = physicsB.mass / totalMass;
+  float ratioB = physicsA.mass / totalMass;
+  
+  transformA.position -= collisionNormal * penetrationDepth * ratioA;
+  transformB.position += collisionNormal * penetrationDepth * ratioB;
+  
+  // Apply realistic bounce and friction
+  glm::vec3 relativeVelocity = physicsB.velocity - physicsA.velocity;
+  float velocityAlongNormal = glm::dot(relativeVelocity, collisionNormal);
+  float restitution = std::min(physicsA.restitution, physicsB.restitution);
+  float impulseScalar = -(1.0f + restitution) * velocityAlongNormal;
+  impulseScalar /= physicsA.mass + physicsB.mass;
+  
+  // Apply impulse to both objects
+  glm::vec3 impulse = collisionNormal * impulseScalar;
+  physicsA.velocity -= impulse * physicsB.mass;
+  physicsB.velocity += impulse * physicsA.mass;
+}</code>
+            </div>
+          </div>
+
           <div class="media-section">
             <h3>Procedural Terrain System</h3>
             <div class="code-block">
@@ -366,6 +449,10 @@ public:
               <span class="value">ECS</span>
             </li>
             <li>
+              <span class="label">Physics System</span>
+              <span class="value">Real-time Simulation</span>
+            </li>
+            <li>
               <span class="label">Terrain System</span>
               <span class="value">Procedural Generation</span>
             </li>
@@ -396,12 +483,26 @@ public:
           <h3>Key Achievements</h3>
           <ul class="info-list">
             <li>Custom ECS Implementation</li>
+            <li>Advanced Physics Simulation</li>
             <li>Procedural Terrain Generation</li>
             <li>PBR Rendering Pipeline</li>
             <li>Dynamic Asset System</li>
             <li>Real-time Material Switching</li>
             <li>Memory-efficient Design</li>
             <li>Professional Architecture</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Physics Features</h3>
+          <ul class="info-list">
+            <li>Gravity Simulation</li>
+            <li>Object-Object Collisions</li>
+            <li>Terrain Collision Detection</li>
+            <li>Mass-based Interactions</li>
+            <li>Realistic Bounce & Friction</li>
+            <li>Real-time UI Controls</li>
+            <li>Dynamic Object Spawning</li>
           </ul>
         </div>
 
@@ -434,7 +535,7 @@ public:
       </div>
       <p class="video-caption" style="margin-top: var(--space-md);">
         Complete C++ game engine implementation available on <a href="https://github.com/mounirziad/OPENGL-Game-Engine" target="_blank">GitHub</a>, 
-        featuring advanced graphics programming, procedural terrain generation, and modern software architecture.
+        featuring advanced graphics programming, real-time physics simulation, procedural terrain generation, and modern software architecture.
       </p>
     </section>
   </main>
