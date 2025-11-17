@@ -23,6 +23,76 @@
       font-size: 0.9rem;
       color: #777;
     }
+    
+    /* New styling for advanced features showcase */
+    .feature-highlight {
+      background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid #2a4365;
+    }
+    
+    .feature-grid-advanced {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .feature-card-advanced {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card-advanced:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gi-demo {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      background: rgba(13, 27, 42, 0.7);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    
+    .gi-demo-text {
+      flex: 1;
+    }
+    
+    .gi-visual {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+    
+    .tech-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .comparison {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    
+    .comparison-item {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -52,6 +122,7 @@
         <span class="project-tag">Procedural Terrain</span>
         <span class="project-tag">Physics System</span>
         <span class="project-tag">Real-time 3D</span>
+        <!-- NEW TAGS -->
         <span class="project-tag">Global Illumination</span>
         <span class="project-tag">Bloom Effects</span>
         <span class="project-tag">Shadow Mapping</span>
@@ -73,7 +144,7 @@
       </div>
 
       <div class="video-caption">
-        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain generation, physics simulation, material system, and ECS architecture
+        <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain generation, physics simulation, material system, ECS architecture, and advanced graphics features including Global Illumination and Bloom effects.
       </div>
 
       <!-- Image Gallery -->
@@ -84,12 +155,32 @@
             <strong>Real-time Rendering & Physics:</strong> Dynamic model loading, cube with PBR materials, procedurally generated terrain with collision detection, and real-time physics simulation
           </div>
         </div>
+        
+        <!-- NEW: GI and Bloom Showcase -->
+        <div class="gallery-item">
+          <img src="images/SSGlowing.png" alt="Global Illumination and Bloom Effects" />
+          <div class="image-caption">
+            <strong>Advanced Lighting & Post-Processing:</strong> Real-time Global Illumination with color bleeding from colored walls, 
+            HDR bloom effects on emissive materials, and dynamic shadow mapping creating realistic lighting environments
+          </div>
+        </div>
+        
         <div class="gallery-item">
           <img src="images/GEModel WireFrames.png" alt="Wireframe Visualization of Terrain and Cube" />
           <div class="image-caption">
             <strong>Wireframe Analysis:</strong> Terrain mesh structure and cube geometry showcasing the underlying ECS architecture, rendering pipeline, and collision volumes
           </div>
         </div>
+        
+        <!-- NEW: Glowing Cubes Showcase -->
+        <div class="gallery-item">
+          <img src="images/GE-Glowing-Cubes.png" alt="Glowing Cubes with Bloom" />
+          <div class="image-caption">
+            <strong>Emissive Material System:</strong> Dynamic glowing cubes with configurable emissive intensity, 
+            real-time bloom post-processing, and HDR rendering pipeline for realistic light emission effects
+          </div>
+        </div>
+        
         <div class="gallery-item">
           <img src="images/GEphysicscollisions.png" alt="Physics System with Object Collisions" />
           <div class="image-caption">
@@ -105,12 +196,49 @@
           <h2>Project Overview</h2>
           <p>
             A professional-grade 3D game engine built entirely from scratch in modern C++. 
-    This engine showcases advanced graphics programming techniques, custom Entity-Component-System architecture, 
-    real-time procedural terrain generation, sophisticated physics simulation, and cutting-edge rendering capabilities 
-    including <strong>real-time Global Illumination</strong>, <strong>dynamic bloom effects</strong>, and <strong>advanced shadow mapping</strong>. 
-    Designed with scalability and performance in mind, it demonstrates deep understanding of computer graphics, 
-    physics simulation, memory management, and software architecture.
+            This engine showcases advanced graphics programming techniques, custom Entity-Component-System architecture, 
+            real-time procedural terrain generation, sophisticated physics simulation, and cutting-edge rendering capabilities 
+            including <strong>real-time Global Illumination</strong>, <strong>dynamic bloom effects</strong>, and <strong>advanced shadow mapping</strong>. 
+            Designed with scalability and performance in mind, it demonstrates deep understanding of computer graphics, 
+            physics simulation, memory management, and software architecture.
           </p>
+        </section>
+
+        <!-- NEW: Advanced Features Highlight Section -->
+        <section class="feature-highlight">
+          <h2>✨ Advanced Graphics & Lighting</h2>
+          <p>The engine now features cutting-edge real-time graphics techniques that bring scenes to life with dynamic lighting, realistic shadows, and stunning visual effects.</p>
+          
+          <div class="gi-demo">
+            <div class="gi-demo-text">
+              <h3>Real-time Global Illumination</h3>
+              <p>The voxel-based GI system calculates indirect lighting in real-time, creating natural color bleeding and soft ambient illumination that responds dynamically to scene changes.</p>
+              <ul>
+                <li>Voxel cone tracing for accurate indirect lighting</li>
+                <li>Dynamic color bleeding between surfaces</li>
+                <li>Real-time updates as objects move</li>
+                <li>Configurable GI intensity and quality</li>
+              </ul>
+            </div>
+            <div class="gi-visual">
+              <div class="tech-icon">🌍</div>
+              <h4>GI Visualization</h4>
+              <p>Color bleeding from red, green, blue, and yellow walls creates natural ambient lighting throughout the scene.</p>
+            </div>
+          </div>
+          
+          <div class="comparison">
+            <div class="comparison-item">
+              <div class="tech-icon">💡</div>
+              <h4>Without GI</h4>
+              <p>Flat lighting with harsh shadows and no ambient color influence from surrounding surfaces.</p>
+            </div>
+            <div class="comparison-item">
+              <div class="tech-icon">💫</div>
+              <h4>With GI</h4>
+              <p>Natural ambient lighting with color bleeding, soft shadows, and realistic light propagation.</p>
+            </div>
+          </div>
         </section>
 
         <section class="project-features">
@@ -208,6 +336,85 @@ Material* pbrMaterial = new Material(
   SHADER_MANAGER.GetShader(PBR), 
   glm::vec3(0.7f, 0.7f, 0.7f)
 );</code>
+              </div>
+            </div>
+
+            <!-- NEW: Advanced Graphics Features -->
+            <div class="feature-card">
+              <h3>🌍 Real-time Global Illumination</h3>
+              <p>Advanced voxel-based GI system with dynamic lighting, color bleeding, and real-time indirect illumination.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C++</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>// Voxel-based GI implementation
+class GlobalIllumination {
+  bool Initialize(int voxelResolution = 128);
+  void Update(glm::vec3 cameraPos);
+  void ApplyGI(Shader* shader, const glm::mat4& view, const glm::mat4& projection);
+};
+
+// Real-time GI updates
+m_giSystem.Update(camera.Position);
+m_giSystem.ApplyGI(shader, view, projection);
+
+// Dynamic color bleeding from colored walls
+Material* wallMaterial = new Material(shader, wallColors[i]);
+wallMaterial->albedo = wallColors[i];
+wallMaterial->roughness = 0.8f; // Rough surfaces for better GI diffusion</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>💫 Dynamic Bloom & Emissive Materials</h3>
+              <p>HDR bloom pipeline with configurable intensity, threshold, and glowing material system.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C++</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>// Emissive material system
+Material* glowingCubeMaterial = new Material(SHADER_MANAGER.GetShader(PBR));
+glowingCubeMaterial->SetEmissive(15.0f, glm::vec3(1.0f, 0.8f, 0.2f)); // High intensity glow
+
+// Bloom pipeline configuration
+renderer.SetBloomEnabled(true);
+renderer.SetBloomIntensity(1.5f);
+renderer.SetBloomThreshold(1.8f); // Lower threshold for more glow
+renderer.SetBlurIterations(8);
+renderer.SetBlurStrength(1.5f);
+
+// Dual-output fragment shader for bloom
+layout (location = 0) out vec4 FragColor;     // Main scene
+layout (location = 1) out vec4 BrightColor;   // Emissive only</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🌑 Advanced Shadow Mapping</h3>
+              <p>High-resolution shadow mapping with bias correction, PCF filtering, and dynamic light sources.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C++</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>// Shadow mapping system
+bool InitializeShadowMapping() {
+  glGenFramebuffers(1, &m_shadowMapFBO);
+  glGenTextures(1, &m_shadowMapTexture);
+  // 2048x2048 shadow map resolution
+}
+
+// Shadow calculation with bias
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir) {
+  float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
+  float shadow = currentDepth - bias > closestDepth ? 1.0 : 0.0;
+  return shadow;
+}
+
+// Real-time shadow updates
+RenderShadowPass(registry, lightPos);</code>
               </div>
             </div>
 
@@ -408,6 +615,94 @@ void TerrainSystem::GenerateTerrain(TerrainComponent& terrain) {
           </div>
 
           <div class="media-section">
+            <h3>Global Illumination Implementation</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+                <button class="code-copy">📋 Copy</button>
+              </div>
+              <code>// Voxel-based GI system
+bool GlobalIllumination::Initialize(int voxelResolution) {
+  m_voxelResolution = voxelResolution;
+  
+  // Create 3D texture for voxel data
+  glGenTextures(1, &m_voxelTexture3D);
+  glBindTexture(GL_TEXTURE_3D, m_voxelTexture3D);
+  
+  // Allocate texture storage
+  glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, 
+               m_voxelResolution, m_voxelResolution, m_voxelResolution,
+               0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+  
+  // Create framebuffer for voxelization
+  glGenFramebuffers(1, &m_voxelizationFBO);
+  
+  return true;
+}
+
+// Apply GI to shaders
+void GlobalIllumination::ApplyGI(Shader* shader, const glm::mat4& view, const glm::mat4& projection) {
+  if (!m_enabled || !shader) return;
+  
+  shader->use();
+  
+  // Bind voxel texture
+  glActiveTexture(GL_TEXTURE5);
+  glBindTexture(GL_TEXTURE_3D, m_voxelTexture3D);
+  shader->setInt("voxelTexture", 5);
+  
+  // Set GI parameters
+  shader->setFloat("giIntensity", m_giIntensity);
+  shader->setInt("voxelResolution", m_voxelResolution);
+  
+  // Set camera position for cone tracing
+  glm::vec3 camPos = glm::vec3(glm::inverse(view)[3]);
+  shader->setVec3("cameraPos", camPos);
+}</code>
+            </div>
+          </div>
+
+          <div class="media-section">
+            <h3>Bloom Pipeline Implementation</h3>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+                <button class="code-copy">📋 Copy</button>
+              </div>
+              <code>// Bloom system initialization
+bool BloomSystem::Initialize(int screenWidth, int screenHeight) {
+  // Create HDR framebuffer
+  glGenFramebuffers(1, &m_hdrFBO);
+  glBindFramebuffer(GL_FRAMEBUFFER, m_hdrFBO);
+  
+  // Create color buffers
+  glGenTextures(2, m_colorBuffers);
+  for (unsigned int i = 0; i < 2; i++) {
+    glBindTexture(GL_TEXTURE_2D, m_colorBuffers[i]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, 
+                 screenWidth, screenHeight, 0, GL_RGBA, GL_FLOAT, NULL);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, 
+                           GL_TEXTURE_2D, m_colorBuffers[i], 0);
+  }
+  
+  // Create ping-pong framebuffers for blurring
+  glGenFramebuffers(2, m_pingpongFBO);
+  glGenTextures(2, m_pingpongColorbuffers);
+  for (unsigned int i = 0; i < 2; i++) {
+    glBindFramebuffer(GL_FRAMEBUFFER, m_pingpongFBO[i]);
+    glBindTexture(GL_TEXTURE_2D, m_pingpongColorbuffers[i]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, 
+                 screenWidth, screenHeight, 0, GL_RGBA, GL_FLOAT, NULL);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, 
+                           GL_TEXTURE_2D, m_pingpongColorbuffers[i], 0);
+  }
+  
+  return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
+}</code>
+            </div>
+          </div>
+
+          <div class="media-section">
             <h3>Memory Management & Performance</h3>
             <div class="code-block">
               <div class="code-header">
@@ -464,50 +759,50 @@ public:
 
       <div class="project-sidebar">
         <div class="info-card">
-  <h3>Technical Specifications</h3>
-  <ul class="info-list">
-    <li>
-      <span class="label">Language</span>
-      <span class="value">C++17</span>
-    </li>
-    <li>
-      <span class="label">Graphics API</span>
-      <span class="value">OpenGL 3.3+</span>
-    </li>
-    <li>
-      <span class="label">Rendering</span>
-      <span class="value">PBR, Deferred, GI</span> <!-- Updated -->
-    </li>
-    <li>
-      <span class="label">Architecture</span>
-      <span class="value">ECS</span>
-    </li>
-    <li>
-      <span class="label">Physics System</span>
-      <span class="value">Real-time Simulation</span>
-    </li>
-    <li>
-      <span class="label">Terrain System</span>
-      <span class="value">Procedural Generation</span>
-    </li>
-    <li>
-      <span class="label">Lighting</span>
-      <span class="value">GI + Shadow Mapping</span> <!-- New -->
-    </li>
-    <li>
-      <span class="label">Post-Processing</span>
-      <span class="value">HDR Bloom</span> <!-- New -->
-    </li>
-    <li>
-      <span class="label">Performance</span>
-      <span class="value">60+ FPS</span>
-    </li>
-    <li>
-      <span class="label">Platform</span>
-      <span class="value">Windows</span>
-    </li>
-  </ul>
-</div>
+          <h3>Technical Specifications</h3>
+          <ul class="info-list">
+            <li>
+              <span class="label">Language</span>
+              <span class="value">C++17</span>
+            </li>
+            <li>
+              <span class="label">Graphics API</span>
+              <span class="value">OpenGL 3.3+</span>
+            </li>
+            <li>
+              <span class="label">Rendering</span>
+              <span class="value">PBR, Deferred, GI</span> <!-- Updated -->
+            </li>
+            <li>
+              <span class="label">Architecture</span>
+              <span class="value">ECS</span>
+            </li>
+            <li>
+              <span class="label">Physics System</span>
+              <span class="value">Real-time Simulation</span>
+            </li>
+            <li>
+              <span class="label">Terrain System</span>
+              <span class="value">Procedural Generation</span>
+            </li>
+            <li>
+              <span class="label">Lighting</span>
+              <span class="value">GI + Shadow Mapping</span> <!-- New -->
+            </li>
+            <li>
+              <span class="label">Post-Processing</span>
+              <span class="value">HDR Bloom</span> <!-- New -->
+            </li>
+            <li>
+              <span class="label">Performance</span>
+              <span class="value">60+ FPS</span>
+            </li>
+            <li>
+              <span class="label">Platform</span>
+              <span class="value">Windows</span>
+            </li>
+          </ul>
+        </div>
 
         <div class="info-card">
           <h3>Dependencies</h3>
@@ -532,6 +827,37 @@ public:
             <li>Real-time Material Switching</li>
             <li>Memory-efficient Design</li>
             <li>Professional Architecture</li>
+            <!-- NEW -->
+            <li>Real-time Global Illumination</li>
+            <li>HDR Bloom Pipeline</li>
+            <li>Advanced Shadow Mapping</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Advanced Rendering Features</h3>
+          <ul class="info-list">
+            <li>Real-time Global Illumination</li>
+            <li>Voxel-based GI System</li>
+            <li>Dynamic Color Bleeding</li>
+            <li>HDR Bloom Pipeline</li>
+            <li>Emissive Material System</li>
+            <li>Shadow Mapping (2048x2048)</li>
+            <li>PBR with Metallic/Roughness</li>
+            <li>Real-time Material Switching</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>GI & Lighting Features</h3>
+          <ul class="info-list">
+            <li>Voxel Cone Tracing</li>
+            <li>Dynamic Indirect Lighting</li>
+            <li>Color Bleeding Effects</li>
+            <li>Real-time GI Updates</li>
+            <li>Configurable GI Intensity</li>
+            <li>Multiple Bounce Simulation</li>
+            <li>Emissive Surface Support</li>
           </ul>
         </div>
 
@@ -577,7 +903,8 @@ public:
       </div>
       <p class="video-caption" style="margin-top: var(--space-md);">
         Complete C++ game engine implementation available on <a href="https://github.com/mounirziad/OPENGL-Game-Engine" target="_blank">GitHub</a>, 
-        featuring advanced graphics programming, real-time physics simulation, procedural terrain generation, and modern software architecture.
+        featuring advanced graphics programming including <strong>real-time Global Illumination</strong>, <strong>HDR bloom pipeline</strong>, 
+        <strong>dynamic shadow mapping</strong>, physics simulation, procedural terrain generation, and modern software architecture.
       </p>
     </section>
   </main>
