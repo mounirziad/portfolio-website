@@ -24,6 +24,46 @@
       font-size: 0.9rem;
       color: #777;
     }
+
+    /* Image gallery styling */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .gallery-item {
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-caption {
+      padding: 15px;
+      background: #2a2a2a;
+      color: #ccc;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .image-caption strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
@@ -57,25 +97,25 @@
       </div>
     </div>
 
-    <!-- IMAGES MOVED TO TOP -->
+    <!-- UPDATED: Using your local screenshots -->
     <section class="project-media">
       <div class="image-gallery">
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="WhiteMaw mountain environment">
+          <img src="images/WhiteMaw1.png" alt="WhiteMaw mountain environment and camp setup">
           <div class="image-caption">
-            <strong>Atmospheric Environment:</strong> Snowy mountain survival horror with dynamic day-night cycle and URP lighting
+            <strong>Atmospheric Environment:</strong> Snowy mountain survival horror with dynamic day-night cycle, campfire mechanics, and URP lighting
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Yeti AI and campfire mechanics">
+          <img src="images/WhiteMaw2.png" alt="Yeti AI and resource management systems">
           <div class="image-caption">
-            <strong>Survival Mechanics:</strong> Dual resource management (heat/hunger) with campfire system and stalking AI
+            <strong>Survival Mechanics:</strong> Dual resource management (heat/hunger) with campfire system, inventory, and stalking AI behavior
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Breathing mini-game and tent hideout">
+          <img src="images/WhiteMaw3.png" alt="Gameplay mechanics and interactions">
           <div class="image-caption">
-            <strong>Tense Gameplay:</strong> Breathing mini-game for hiding with skill-check mechanics and dynamic difficulty scaling
+            <strong>Tense Gameplay:</strong> Interactive systems including cooking, gathering, and tension-building horror elements in the mountain wilderness
           </div>
         </div>
       </div>
@@ -452,7 +492,7 @@ void HandleColdShiver()
             </li>
             <li>
               <span class="label">Duration</span>
-              <span class="value">3 Day Development</span>
+              <span class="value">Solo Project</span>
             </li>
             <li>
               <span class="label">Platform</span>
@@ -558,7 +598,15 @@ void HandleColdShiver()
         }, 2000);
       });
     });
+
+    // Image loading error handling
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.onerror = function() {
+        console.log(`Image failed to load: ${this.src}`);
+        // You could set a fallback image here if needed
+        // this.src = 'images/fallback.png';
+      };
+    });
   </script>
 </body>
 </html>
-
