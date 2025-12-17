@@ -1,63 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arctic Invasion – Mounir Ziad</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhiteMaw – Mounir Ziad</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Minimal additions for indentation */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Keep your existing header layout but add brand */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand {
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 class="logo">Mounir Ziad</h1>
+ <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo-container">
+        <div class="logo">Mounir Ziad</div>
+        <div class="brand">Game Developer</div>
+      </div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </nav>
+    </div>
   </header>
 
-  <main id="arcticinvasion-page" class="project-page">
+
+  <main id="whitemaw-page" class="project-page">
     <div class="project-page-header">
-      <h1>Arctic Invasion</h1>
+      <h1>WhiteMaw</h1>
       <div class="project-meta-large">
+        <span class="project-tag">Unity 6</span>
         <span class="project-tag">C#</span>
-        <span class="project-tag">Unity</span>
-        <span class="project-tag">Mobile Development</span>
-        <span class="project-tag">Tower Defense</span>
-        <span class="project-tag">Game Architecture</span>
+        <span class="project-tag">AI Systems</span>
+        <span class="project-tag">Survival Horror</span>
+        <span class="project-tag">URP</span>
+        <span class="project-tag">NavMesh</span>
+        <span class="project-tag">State Machines</span>
       </div>
     </div>
 
+    <!-- IMAGES MOVED TO TOP -->
     <section class="project-media">
-      <!-- Simple video link container -->
-      <div class="video-container">
-        <div style="background: var(--bg-tertiary); padding: var(--space-xxl); text-align: center; border-radius: var(--radius-md);">
-          <div style="font-size: 3rem; margin-bottom: var(--space-md);">🏔️</div>
-          <h3>Arctic Invasion Gameplay</h3>
-          <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Watch the gameplay trailer on YouTube</p>
-          <a href="https://www.youtube.com/watch?v=R2ZupiC5tmM" class="btn btn-primary" target="_blank">
-            🎬 Watch Gameplay Trailer
-          </a>
-        </div>
-      </div>
-
-      <div class="video-caption">
-        <strong>Gameplay Trailer:</strong> Showcasing tower defense mechanics and strategic gameplay
-      </div>
-
       <div class="image-gallery">
         <div class="gallery-item">
-          <img src="images/ArcticInvasionss1.png" alt="Tower Defense Gameplay" />
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="WhiteMaw mountain environment">
           <div class="image-caption">
-            <strong>Strategic Tower Placement:</strong> Drag-and-drop tower system with upgrade paths
+            <strong>Atmospheric Environment:</strong> Snowy mountain survival horror with dynamic day-night cycle and URP lighting
           </div>
         </div>
         <div class="gallery-item">
-          <img src="images/ArcticInvasionss2.png" alt="Enemy Wave Management" />
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Yeti AI and campfire mechanics">
           <div class="image-caption">
-            <strong>Wave Management System:</strong> Enemy spawn patterns and pathfinding behaviors
+            <strong>Survival Mechanics:</strong> Dual resource management (heat/hunger) with campfire system and stalking AI
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Breathing mini-game and tent hideout">
+          <div class="image-caption">
+            <strong>Tense Gameplay:</strong> Breathing mini-game for hiding with skill-check mechanics and dynamic difficulty scaling
           </div>
         </div>
       </div>
@@ -68,15 +86,10 @@
         <section class="project-overview">
           <h2>Project Overview</h2>
           <p>
-            <em>Arctic Invasion</em> is a modular, scalable mobile tower defense game developed with Unity, 
-            featuring strategic tower placement, dynamic enemy waves, and persistent progression systems. 
-            As Lead Programmer, I architected core gameplay systems that balance strategic depth with 
-            mobile-friendly accessibility.
+            <strong>WhiteMaw</strong> is an intense wilderness survival horror game built in Unity 6 with URP, where players must survive one harrowing night in the snowy mountains while being hunted by a terrifying Yeti. This project combines sophisticated resource management, stealth mechanics, and atmospheric horror as you gather wood, cook food, maintain warmth, and evade the stalking predator.
           </p>
           <p>
-            This project demonstrates production-ready mobile game development practices, including 
-            performance-optimized pathfinding, responsive touch controls, and scalable architecture 
-            supporting extensive content updates and monetization systems.
+            The game features advanced AI behavior systems, dual survival mechanics (hunger and heat), dynamic day-night cycle with scene transitions, and a unique breathing mini-game mechanic for hiding from the Yeti. Built with clean, scalable architecture suitable for team collaboration.
           </p>
         </section>
 
@@ -85,224 +98,82 @@
           
           <div class="feature-grid">
             <div class="feature-card">
-              <h3>🏗️ Modular Tower System</h3>
-              <p>Extensible tower architecture supporting multiple types, upgrades, and placement mechanics.</p>
+              <h3>🎯 Advanced Yeti AI System</h3>
+              <p>6-state AI system with NavMesh pathfinding, circular patrol patterns, noise-reactive investigation, and stalking behavior.</p>
               <div class="code-block">
                 <div class="code-header">
                   <span class="code-language">C#</span>
                   <button class="code-copy">📋 Copy</button>
                 </div>
-                <code>public class TowerSystem : MonoBehaviour
+                <code>void InvestigateBehavior()
 {
-    [SerializeField] private TowerData[] towerTypes;
-    [SerializeField] private LayerMask placementLayer;
-    [SerializeField] private CurrencySystem currency;
+    agent.speed = patrolSpeed;
+    investigationTargetAngle = GetAngleToPlayer();
     
-    private Tower selectedTower;
-    private bool isPlacingTower;
+    float angleDiff = Mathf.DeltaAngle(currentAngle, investigationTargetAngle);
+    float absAngleDiff = Mathf.Abs(angleDiff);
     
-    public void StartTowerPlacement(TowerData towerData)
+    if (absAngleDiff <= 2f)
     {
-        if (currency.CanAfford(towerData.cost))
-        {
-            selectedTower = Instantiate(towerData.prefab).GetComponent<Tower>();
-            selectedTower.Initialize(towerData);
-            isPlacingTower = true;
-            ShowValidPlacementAreas();
-        }
+        HandleInvestigationComplete();
+        return;
     }
     
-    private void Update()
-    {
-        if (isPlacingTower)
-        {
-            HandleTowerPlacement();
-        }
-    }
+    float moveDirection = Mathf.Sign(angleDiff);
+    float moveAmount = Mathf.Min(angularSpeed * Time.deltaTime, absAngleDiff);
+    currentAngle += moveDirection * moveAmount;
     
-    private void HandleTowerPlacement()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, placementLayer))
-        {
-            selectedTower.transform.position = hit.point;
-            
-            if (Input.GetMouseButtonDown(0) && IsValidPlacement(hit.point))
-            {
-                PlaceTower(hit.point);
-            }
-        }
-    }
-    
-    private void PlaceTower(Vector3 position)
-    {
-        currency.Spend(selectedTower.TowerData.cost);
-        selectedTower.OnPlaced();
-        isPlacingTower = false;
-        HidePlacementAreas();
-    }
+    SetDestinationToAngle(currentAngle);
+}
+
+// State Machine Structure
+public enum YetiState
+{
+    Patrolling,
+    Investigating,
+    Stalking,
+    Hunting,
+    Attacking,
+    WaitingAtTent
 }</code>
               </div>
             </div>
 
             <div class="feature-card">
-              <h3>🎯 Enemy Wave Management</h3>
-              <p>Dynamic wave system with spawn patterns, pathfinding, and behavior trees.</p>
+              <h3>🔥 Dual Survival Resource Management</h3>
+              <p>Real-time hunger and heat depletion systems with UnityEvents for UI updates and game-over conditions.</p>
               <div class="code-block">
                 <div class="code-header">
                   <span class="code-language">C#</span>
                   <button class="code-copy">📋 Copy</button>
                 </div>
-                <code>public class WaveManager : MonoBehaviour
+                <code>public class HeatSystem : MonoBehaviour
 {
-    [SerializeField] private WaveData[] waves;
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private PathfindingGrid pathfindingGrid;
+    [SerializeField] private float maxHeat = 100f;
+    [SerializeField] private float currentHeat = 100f;
+    [SerializeField] private float heatDecayRate = 1f;
+    public bool isHeating = false;
     
-    private int currentWave = 0;
-    private int enemiesRemaining = 0;
-    private bool waveInProgress = false;
+    public UnityEvent<float> OnHeatChanged;
+    public UnityEvent OnHeatDepleted;
     
-    public void StartNextWave()
+    void Update()
     {
-        if (!waveInProgress && currentWave < waves.Length)
+        if (!isHeating)
         {
-            StartCoroutine(SpawnWave(waves[currentWave]));
-            currentWave++;
+            DecreaseHeat(heatDecayRate * Time.deltaTime);
         }
     }
     
-    private IEnumerator SpawnWave(WaveData waveData)
+    private void DecreaseHeat(float amount)
     {
-        waveInProgress = true;
-        enemiesRemaining = waveData.totalEnemies;
+        currentHeat = Mathf.Max(0f, currentHeat - amount);
+        OnHeatChanged?.Invoke(currentHeat);
         
-        foreach (var spawnGroup in waveData.spawnGroups)
+        if (currentHeat <= 0f && !dead)
         {
-            for (int i = 0; i < spawnGroup.count; i++)
-            {
-                SpawnEnemy(spawnGroup.enemyType, GetSpawnPoint());
-                yield return new WaitForSeconds(spawnGroup.spawnInterval);
-            }
-        }
-        
-        yield return new WaitUntil(() => enemiesRemaining <= 0);
-        waveInProgress = false;
-        OnWaveCompleted?.Invoke(currentWave);
-    }
-    
-    private void SpawnEnemy(EnemyType enemyType, Transform spawnPoint)
-    {
-        var enemy = Instantiate(enemyType.prefab, spawnPoint.position, Quaternion.identity);
-        var enemyAI = enemy.GetComponent<EnemyAI>();
-        enemyAI.Initialize(pathfindingGrid, OnEnemyDefeated);
-    }
-    
-    private void OnEnemyDefeated(EnemyAI enemy)
-    {
-        enemiesRemaining--;
-        currency.Add(enemy.Reward);
-    }
-}
-
-[System.Serializable]
-public class WaveData
-{
-    public string waveName;
-    public SpawnGroup[] spawnGroups;
-    public int totalEnemies;
-    public float waveReward;
-}</code>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <h3>⚔️ Barracks & Unit System</h3>
-              <p>Dynamic unit spawning from player-placed barracks with strategic AI behaviors.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C#</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>public class Barracks : Tower
-{
-    [SerializeField] private UnitData unitData;
-    [SerializeField] private float spawnInterval = 3f;
-    [SerializeField] private int maxUnits = 5;
-    
-    private List<Unit> spawnedUnits = new List<Unit>();
-    private float spawnTimer;
-    
-    protected override void Update()
-    {
-        base.Update();
-        
-        if (spawnedUnits.Count < maxUnits)
-        {
-            spawnTimer += Time.deltaTime;
-            if (spawnTimer >= spawnInterval)
-            {
-                SpawnUnit();
-                spawnTimer = 0f;
-            }
-        }
-    }
-    
-    private void SpawnUnit()
-    {
-        var unit = Instantiate(unitData.prefab, transform.position, Quaternion.identity);
-        var unitComponent = unit.GetComponent<Unit>();
-        unitComponent.Initialize(unitData, this);
-        
-        spawnedUnits.Add(unitComponent);
-        unitComponent.OnUnitDestroyed += OnUnitDestroyed;
-    }
-    
-    private void OnUnitDestroyed(Unit unit)
-    {
-        spawnedUnits.Remove(unit);
-        unit.OnUnitDestroyed -= OnUnitDestroyed;
-    }
-    
-    public Vector3 GetRallyPoint()
-    {
-        // Calculate strategic position based on enemy proximity
-        return transform.position + transform.forward * 2f;
-    }
-}
-
-public class Unit : MonoBehaviour
-{
-    private UnitData data;
-    private Barracks homeBarracks;
-    private EnemyAI target;
-    
-    public void Initialize(UnitData unitData, Barracks barracks)
-    {
-        data = unitData;
-        homeBarracks = barracks;
-        FindTarget();
-    }
-    
-    private void FindTarget()
-    {
-        // Find closest enemy within attack range
-        var enemies = FindObjectsOfType<EnemyAI>();
-        float closestDistance = Mathf.Infinity;
-        
-        foreach (var enemy in enemies)
-        {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < data.attackRange && distance < closestDistance)
-            {
-                target = enemy;
-                closestDistance = distance;
-            }
-        }
-        
-        if (target != null)
-        {
-            StartCoroutine(AttackRoutine());
+            dead = true;
+            GameManager.Instance.GameOver("heat");
         }
     }
 }</code>
@@ -310,110 +181,241 @@ public class Unit : MonoBehaviour
             </div>
 
             <div class="feature-card">
-              <h3>💰 Economy & Progression</h3>
-              <p>Persistent currency system with in-game purchases and reward logic.</p>
+              <h3>🌲 Interactive Resource Gathering</h3>
+              <p>Tree chopping with axe requirement, dynamic log spawning, wood pile management, and campfire fuel system.</p>
               <div class="code-block">
                 <div class="code-header">
                   <span class="code-language">C#</span>
                   <button class="code-copy">📋 Copy</button>
                 </div>
-                <code>public class CurrencySystem : MonoBehaviour
+                <code>public class Campfire : Interactable
 {
-    [SerializeField] private int startingCurrency = 100;
+    [SerializeField] private int numLogs;
+    [SerializeField] private float burnTimePerLog = 15f;
+    [SerializeField] private bool isBurning = false;
     
-    private int currentCurrency;
-    private const string CURRENCY_KEY = "PlayerCurrency";
-    
-    public int CurrentCurrency => currentCurrency;
-    public event Action<int> OnCurrencyChanged;
-    
-    private void Start()
+    public void AddLog()
     {
-        LoadCurrency();
-    }
-    
-    public void Add(int amount)
-    {
-        currentCurrency += amount;
-        SaveCurrency();
-        OnCurrencyChanged?.Invoke(currentCurrency);
-    }
-    
-    public bool Spend(int amount)
-    {
-        if (CanAfford(amount))
+        if (numLogs == 0)
         {
-            currentCurrency -= amount;
-            SaveCurrency();
-            OnCurrencyChanged?.Invoke(currentCurrency);
-            return true;
-        }
-        return false;
-    }
-    
-    public bool CanAfford(int amount)
-    {
-        return currentCurrency >= amount;
-    }
-    
-    private void LoadCurrency()
-    {
-        currentCurrency = PlayerPrefs.GetInt(CURRENCY_KEY, startingCurrency);
-    }
-    
-    private void SaveCurrency()
-    {
-        PlayerPrefs.SetInt(CURRENCY_KEY, currentCurrency);
-        PlayerPrefs.Save();
-    }
-}
-
-public class ShopSystem : MonoBehaviour
-{
-    [SerializeField] private ShopItem[] availableItems;
-    [SerializeField] private CurrencySystem currency;
-    [SerializeField] private UIManager uiManager;
-    
-    public void PurchaseItem(ShopItem item)
-    {
-        if (currency.Spend(item.cost))
-        {
-            ApplyItemEffect(item);
-            uiManager.ShowPurchaseSuccess(item);
+            numLogs++;
+            logsDisplayed[0].SetActive(true);
+            StartFire();
+            AudioManager.Instance.PlaySFX("StokingFire");
         }
         else
         {
-            uiManager.ShowInsufficientFunds();
+            numLogs++;
+            SoundManager.Instance.AddNoise(5f);
         }
     }
     
-    private void ApplyItemEffect(ShopItem item)
+    private IEnumerator CampfireBurning()
     {
-        switch (item.itemType)
+        isBurning = true;
+        particleObject.SetActive(true);
+        fireLight.enabled = true;
+        
+        while (numLogs > 0)
         {
-            case ItemType.TowerUnlock:
-                TowerManager.Instance.UnlockTower(item.towerData);
-                break;
-            case ItemType.CurrencyBoost:
-                currency.Add(item.boostAmount);
-                break;
-            case ItemType.Upgrade:
-                ApplyUpgrade(item.upgradeData);
-                break;
+            yield return new WaitForSeconds(burnTimePerLog);
+            BurnLog();
+        }
+        
+        isBurning = false;
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🍖 Dynamic Cooking System</h3>
+              <p>Material-blending cooking mechanic with proximity detection, visual feedback through shader lerping, and hunger restoration bonuses.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class CookableFood : MonoBehaviour
+{
+    [SerializeField] private float cookingTime = 5f;
+    [SerializeField] private float cookingRange = 2f;
+    [SerializeField] private float cookedHungerMultiplier = 2f;
+    
+    private void CheckCookingNearFire()
+    {
+        distanceToNearestFire = Vector3.Distance(transform.position, nearestCampfire.transform.position);
+        
+        if (distanceToNearestFire <= cookingRange && nearestCampfire.IsBurning())
+        {
+            currentCookingProgress += Time.deltaTime / cookingTime;
+            currentCookingProgress = Mathf.Clamp01(currentCookingProgress);
+            
+            UpdateMaterialBlend(currentCookingProgress);
+            
+            if (currentCookingProgress >= 1f && !isCooked)
+            {
+                isCooked = true;
+                OnFoodCooked();
+            }
         }
     }
+    
+    private void UpdateMaterialBlend(float cookAmount)
+    {
+        blendedMaterial.Lerp(rawFoodMaterial, cookedFoodMaterial, cookAmount);
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🫁 Breathing Mini-Game Mechanic</h3>
+              <p>Skill-check system for hiding in tent with difficulty scaling based on player condition, failure consequences, and Yeti flee mechanics.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class BreathingMiniGame2 : MonoBehaviour
+{
+    [SerializeField] private float indicatorSpeed = 1f;
+    [SerializeField] private int maxFailedAttempts = 3;
+    
+    public void StartMinigame()
+    {
+        float heat = HeatSystem.Instance.CurrentHeat;
+        float hunger = HungerSystem.Instance.CurrentHunger;
+        float total = heat + hunger;
+        
+        if (total < 50f)
+            maxSkillChecks = 5;
+        else if (total < 100f)
+            maxSkillChecks = 4;
+        else if (total < 150f)
+            maxSkillChecks = 3;
+        else
+            maxSkillChecks = 2;
+        
+        RandomizeZone();
+        UpdateSuccessZoneVisual();
+    }
+    
+    private void OnMinigameCompleted()
+    {
+        SoundManager.Instance.ResetNoiseLevel();
+        YetiAI yeti = Object.FindFirstObjectByType<YetiAI>();
+        
+        if (yeti.currentState == YetiAI.YetiState.Hunting || 
+            yeti.currentState == YetiAI.YetiState.Stalking)
+        {
+            yeti.FleeFromPlayer();
+        }
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🔊 Dynamic Noise Detection System</h3>
+              <p>Sound-based threat level management with automatic decay, event-driven AI reactions, and footstep integration.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class SoundManager : MonoBehaviour
+{
+    [SerializeField] private float currentNoiseLevel = 0f;
+    [SerializeField] private float noiseDecayRate = 1f;
+    
+    public UnityEvent<float> OnNoiseLevelChanged;
+    
+    void Update()
+    {
+        currentNoiseLevel = Mathf.Max(0f, currentNoiseLevel - (noiseDecayRate * Time.deltaTime));
+        
+        if (Mathf.Abs(currentNoiseLevel - previousNoiseLevel) > NOISE_CHANGE_THRESHOLD)
+        {
+            OnNoiseLevelChanged?.Invoke(currentNoiseLevel);
+        }
+    }
+    
+    public void AddNoise(float amount)
+    {
+        currentNoiseLevel = Mathf.Min(maxNoiseLevel, currentNoiseLevel + amount);
+        OnNoiseLevelChanged?.Invoke(currentNoiseLevel);
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>🚶 Advanced Player Controller</h3>
+              <p>Unity 6 compatible movement with Input System integration, hunger-based speed reduction, cold-induced camera shake, and head bob.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>float GetHungerSpeedMultiplier()
+{
+    float hungerPercentage = HungerSystem.Instance.HungerPercentage;
+    
+    if (hungerPercentage < 0.3f)
+        return speedMultiplierAt30Percent;
+    else if (hungerPercentage < 0.5f)
+        return speedMultiplierAt50Percent;
+    else if (hungerPercentage < 0.8f)
+        return speedMultiplierAt80Percent;
+    
+    return 1f;
 }
 
-[System.Serializable]
-public class ShopItem
+void HandleColdShiver()
 {
-    public string itemName;
-    public int cost;
-    public Sprite icon;
-    public ItemType itemType;
-    public TowerData towerData;
-    public int boostAmount;
-    public UpgradeData upgradeData;
+    float shakeAmplitude = GetColdShakeAmplitude();
+    
+    if (shakeAmplitude > 0f)
+    {
+        shakeTimer += Time.deltaTime * shakeFrequency;
+        float shakeX = (Mathf.Sin(shakeTimer) + Random.Range(-1f, 1f) * 0.5f) * shakeAmplitude;
+        camera.transform.localPosition = cameraStartLocalPos + new Vector3(shakeX, 0f, 0f);
+    }
+}</code>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <h3>⏰ Day-Night Cycle System</h3>
+              <p>Scene-based time progression with in-game clock display, automatic transitions between day/night scenes, and survival objective integration.</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-language">C#</span>
+                  <button class="code-copy">📋 Copy</button>
+                </div>
+                <code>public class Clock : MonoBehaviour
+{
+    [SerializeField] private float timeScale = 2f; // 1 real second = 2 in-game minutes
+    
+    void CheckForTimeEnd()
+    {
+        if (isDayScene)
+        {
+            if (timer >= dayEndTime)
+            {
+                StartCoroutine(EndDayAndLoadNight());
+            }
+        }
+        else
+        {
+            float currentTime = timer % (24f * 60f);
+            if (currentTime >= nightEndTime && !nightEnded)
+            {
+                OnWin();
+            }
+        }
+    }
 }</code>
               </div>
             </div>
@@ -421,15 +423,17 @@ public class ShopItem
         </section>
 
         <section class="project-highlights">
-          <h2>Technical Architecture & Design Patterns</h2>
+          <h2>Technical Highlights & Architecture</h2>
           <ul>
-            <li><strong>Modular Tower Defense Framework:</strong> Extensible architecture supporting multiple tower types and upgrade paths</li>
-            <li><strong>Wave Management System:</strong> Configurable enemy spawn patterns with dynamic difficulty scaling</li>
-            <li><strong>Pathfinding Optimization:</strong> Efficient A* implementation for mobile performance constraints</li>
-            <li><strong>Touch Input System:</strong> Responsive drag-and-drop controls optimized for mobile devices</li>
-            <li><strong>Persistent Data Management:</strong> Save system for player progression and currency</li>
-            <li><strong>Event-Driven Architecture:</strong> Decoupled systems for maintainability and extensibility</li>
-            <li><strong>Mobile Monetization Integration:</strong> In-app purchase systems and reward mechanics</li>
+            <li><strong>State Machine Architecture:</strong> Complex enemy AI with 6 behavioral states and seamless transitions</li>
+            <li><strong>NavMesh Integration:</strong> Dynamic pathfinding with circular patrol patterns and direct player pursuit</li>
+            <li><strong>Event-Driven Design:</strong> UnityEvents for system communication and UI updates</li>
+            <li><strong>Material Blending:</strong> Real-time shader interpolation for cooking visual feedback</li>
+            <li><strong>Resource Management:</strong> Dual survival systems affecting player movement and gameplay difficulty</li>
+            <li><strong>Audio Integration:</strong> Spatial audio, dynamic footsteps with noise generation, and contextual sound effects</li>
+            <li><strong>Input System:</strong> Unity's new Input System with action-based controls and pause-aware input handling</li>
+            <li><strong>Performance:</strong> Optimized coroutines, object pooling considerations, and efficient Update loops</li>
+            <li><strong>Unity 6 Compatibility:</strong> Uses linearVelocity instead of deprecated velocity property</li>
           </ul>
         </section>
       </div>
@@ -440,27 +444,27 @@ public class ShopItem
           <ul class="info-list">
             <li>
               <span class="label">Role</span>
-              <span class="value">Lead Programmer</span>
+              <span class="value">Lead Developer</span>
+            </li>
+            <li>
+              <span class="label">Genre</span>
+              <span class="value">Survival Horror</span>
             </li>
             <li>
               <span class="label">Duration</span>
-              <span class="value">Sep 2025 – Present</span>
-            </li>
-            <li>
-              <span class="label">Studio</span>
-              <span class="value">Arctic Games Studio</span>
+              <span class="value">Solo Project</span>
             </li>
             <li>
               <span class="label">Platform</span>
-              <span class="value">Mobile (Unity)</span>
+              <span class="value">PC</span>
             </li>
             <li>
-              <span class="label">Team Size</span>
-              <span class="value">Collaborative Project</span>
+              <span class="label">Engine</span>
+              <span class="value">Unity 6</span>
             </li>
             <li>
-              <span class="label">Language</span>
-              <span class="value">C#</span>
+              <span class="label">Render Pipeline</span>
+              <span class="value">URP</span>
             </li>
           </ul>
         </div>
@@ -468,45 +472,64 @@ public class ShopItem
         <div class="info-card">
           <h3>Technical Stack</h3>
           <ul class="info-list">
-            <li>Unity Engine</li>
-            <li>C# .NET</li>
-            <li>Mobile Optimization</li>
-            <li>A* Pathfinding</li>
-            <li>UI System</li>
-            <li>Data Persistence</li>
+            <li>Unity 6 (6000.2)</li>
+            <li>C# Programming</li>
+            <li>Universal Render Pipeline</li>
+            <li>Unity Input System (1.14.2)</li>
+            <li>NavMesh AI Navigation (2.0.9)</li>
+            <li>Rigidbody Physics</li>
+            <li>Coroutine Systems</li>
+            <li>UnityEvents Architecture</li>
+            <li>Visual Effect Graph (17.2.0)</li>
+            <li>Timeline (1.8.9)</li>
+            <li>TextMesh Pro</li>
           </ul>
         </div>
 
         <div class="info-card">
-          <h3>Key Systems</h3>
+          <h3>Key Features</h3>
           <ul class="info-list">
-            <li>Tower Placement</li>
-            <li>Wave Management</li>
-            <li>Barracks System</li>
-            <li>Economy & Shop</li>
-            <li>Pathfinding</li>
-            <li>Mobile Controls</li>
+            <li>Advanced State Machine AI</li>
+            <li>Dynamic Noise Detection</li>
+            <li>Dual Survival Mechanics</li>
+            <li>Interactive Resource Gathering</li>
+            <li>Material-Blending Cooking</li>
+            <li>Breathing Mini-Game</li>
+            <li>Day-Night Transitions</li>
+            <li>Flashlight Battery System</li>
+            <li>NavMesh Pathfinding</li>
+            <li>Modular Interactable Framework</li>
+            <li>Dynamic Audio System</li>
+            <li>Procedural Footstep Controller</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Achievements</h3>
+          <ul class="info-list">
+            <li>Built Complex AI: 6-state enemy behavior with noise-reactive investigation</li>
+            <li>Designed Survival Loop: Balanced dual-resource management with gathering mechanics</li>
+            <li>Created Dynamic Systems: Material blending, procedural audio, and time progression</li>
+            <li>Implemented Horror Mechanics: Stalking behavior, breathing mini-game, and tension-building</li>
+            <li>Optimized Performance: Efficient NavMesh usage, coroutine management, and Unity 6 compatibility</li>
+            <li>Architected Modular Code: Reusable interactable base class and event-driven systems</li>
           </ul>
         </div>
       </div>
     </div>
 
     <section class="project-repo">
-      <h3>Explore the Code</h3>
+      <h3>Project Details</h3>
       <div class="btn-group">
-        <a href="https://github.com/kingkaue/PenguinTD/tree/main" class="btn btn-primary" target="_blank">
-          💻 View Full Source Code
-        </a>
-        <a href="https://www.youtube.com/watch?v=R2ZupiC5tmM" class="btn btn-secondary" target="_blank">
-          🎬 Watch Gameplay Trailer
-        </a>
-        <a href="projects.html" class="btn">
+        <a href="projects.html" class="btn btn-primary">
           ← Back to Projects
         </a>
+        <a href="#" class="btn btn-secondary" onclick="alert('WhiteMaw project repository coming soon!')">
+          💻 View Code Samples (Above)
+        </a>
       </div>
-      <p class="video-caption" style="margin-top: var(--space-md);">
-        Complete Unity tower defense implementation available on <a href="https://github.com/kingkaue/PenguinTD/tree/main" target="_blank">GitHub</a>, 
-        featuring mobile-optimized architecture and strategic gameplay systems.
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+        <em>Note: WhiteMaw is a portfolio demonstration project showcasing advanced Unity systems architecture and AI programming.</em>
       </p>
     </section>
   </main>
