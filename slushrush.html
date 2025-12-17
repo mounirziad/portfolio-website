@@ -64,6 +64,32 @@
       display: block;
       margin-bottom: 5px;
     }
+
+    /* Itch.io button styling */
+    .itch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fa5c5c 0%, #ed3e3e 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+      box-shadow: 0 4px 12px rgba(237, 62, 62, 0.3);
+    }
+
+    .itch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(237, 62, 62, 0.4);
+      background: linear-gradient(135deg, #ff6b6b 0%, #f04a4a 100%);
+    }
+
+    .itch-btn:active {
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -95,6 +121,11 @@
         <span class="project-tag">NavMesh</span>
         <span class="project-tag">State Machines</span>
       </div>
+      
+      <!-- NEW: Itch.io Button -->
+      <a href="https://frogsonalog.itch.io/white-maw" class="itch-btn" target="_blank">
+        🎮 Play on itch.io
+      </a>
     </div>
 
     <!-- UPDATED: Using your local screenshots -->
@@ -567,14 +598,22 @@ void HandleColdShiver()
         <a href="https://github.com/kingkaue/ProjectYeti" class="btn btn-secondary" target="_blank">
           💻 View Full Source Code
         </a>
+        <a href="https://frogsonalog.itch.io/white-maw" class="btn" target="_blank" style="background: linear-gradient(135deg, #fa5c5c 0%, #ed3e3e 100%); color: white; border: none;">
+          🎮 Play on itch.io
+        </a>
       </div>
       <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
-        <em>Explore the complete Unity project including all scripts, assets, and systems on GitHub.</em>
+        <em>Explore the complete Unity project including all scripts, assets, and systems on GitHub, or play the game directly on itch.io.</em>
       </p>
       <div style="margin-top: 1rem; padding: 10px; background: #f5f5f5; border-radius: 5px; font-size: 0.9rem;">
         <strong>GitHub Repository:</strong> 
         <a href="https://github.com/kingkaue/ProjectYeti" target="_blank" style="color: #0066cc;">
           https://github.com/kingkaue/ProjectYeti
+        </a>
+        <br>
+        <strong>itch.io Page:</strong> 
+        <a href="https://frogsonalog.itch.io/white-maw" target="_blank" style="color: #fa5c5c;">
+          https://frogsonalog.itch.io/white-maw
         </a>
       </div>
     </section>
@@ -616,4 +655,3 @@ void HandleColdShiver()
   </script>
 </body>
 </html>
-
