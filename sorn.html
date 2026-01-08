@@ -23,31 +23,37 @@
       color: #777;
     }
 
-    /* Video embed */
+    /* Video embed - UPDATED */
     .project-video {
       margin: 40px 0;
+      width: 100%;
     }
 
-    .video-wrapper {
+    .video-container {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
       border-radius: 12px;
       overflow: hidden;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
     }
 
-    .video-wrapper iframe {
+    .video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      border: none;
     }
 
     .video-caption {
       margin-top: 10px;
-      color: #aaa;
+      color: var(--text-secondary);
       font-size: 0.9rem;
+      text-align: center;
     }
   </style>
 </head>
@@ -81,9 +87,9 @@
     </div>
   </div>
 
-  <!-- GAMEPLAY VIDEO -->
+  <!-- GAMEPLAY VIDEO - UPDATED -->
   <section class="project-video">
-    <div class="video-wrapper">
+    <div class="video-container">
       <iframe
         src="https://www.youtube.com/embed/f8_dOA7EJJQ?start=174"
         title="S.O.R.N. Gameplay Demo"
