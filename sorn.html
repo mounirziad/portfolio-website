@@ -22,6 +22,33 @@
       font-size: 0.9rem;
       color: #777;
     }
+
+    /* Video embed */
+    .project-video {
+      margin: 40px 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
@@ -53,6 +80,22 @@
       <span class="project-tag">Team Project</span>
     </div>
   </div>
+
+  <!-- GAMEPLAY VIDEO -->
+  <section class="project-video">
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/f8_dOA7EJJQ?start=174"
+        title="S.O.R.N. Gameplay Demo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p class="video-caption">
+      Gameplay footage highlighting high-speed mech movement, lock-on combat, and mission flow.
+    </p>
+  </section>
 
   <!-- MEDIA (PLACEHOLDERS FOR NOW) -->
   <section class="project-media">
@@ -86,12 +129,13 @@
         <p>
           <strong>S.O.R.N.</strong> is a third-person mech action game focused on high-speed movement,
           lock-on–driven combat, and tightly structured mission gameplay. Developed as a large team passion project,
-          the game emphasizes mechanical clarity, player expression through mobility, multiplayer compatability and modular gameplay systems.
+          the game emphasizes mechanical clarity, player expression through mobility, multiplayer compatibility,
+          and modular gameplay systems.
         </p>
         <p>
           My contributions centered on gameplay programming and systems design, supporting movement states,
-          combat flow, dialogue system and data-driven mission logic within Unreal Engine. All of these being contributed within the context
-of multiplayer compatability and gameplay bus functionality. 
+          combat flow, dialogue systems, and data-driven mission logic within Unreal Engine — all built with
+          multiplayer compatibility and gameplay bus functionality in mind.
         </p>
       </section>
 
@@ -110,7 +154,7 @@ of multiplayer compatability and gameplay bus functionality.
               <div class="code-header">
                 <span class="code-language">C++</span>
               </div>
-<code>// Example: simplified movement state handling
+<code>// Simplified movement state handling
 void ASornMech::HandleMovementState()
 {
     if (bIsBoosting)
@@ -135,7 +179,7 @@ void ASornMech::HandleMovementState()
               <div class="code-header">
                 <span class="code-language">C++</span>
               </div>
-<code>// Target acquisition logic (simplified)
+<code>// Target acquisition logic
 void ASornCombatComponent::LockOnTarget(AActor* NewTarget)
 {
     CurrentTarget = NewTarget;
@@ -173,8 +217,7 @@ void UMissionComponent::AdvanceObjective()
               <div class="code-header">
                 <span class="code-language">C++</span>
               </div>
-<code>// Example gameplay component
-UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+<code>UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class USornCombatComponent : public UActorComponent
 {
     GENERATED_BODY()
@@ -189,10 +232,10 @@ class USornCombatComponent : public UActorComponent
         <h2>Technical Contributions</h2>
         <ul>
           <li><strong>Gameplay Programming:</strong> Implemented and refined movement, combat, and mission systems</li>
-          <li><strong>Combat Readability:</strong> Tuned lock-on behavior and camera logic for clarity</li>
+          <li><strong>Combat Readability:</strong> Tuned lock-on behavior and camera logic</li>
           <li><strong>System Modularity:</strong> Built extensible components to support team iteration</li>
           <li><strong>Unreal Workflow:</strong> Integrated C++ systems with Blueprint-driven tuning</li>
-          <li><strong>Team Collaboration:</strong> Worked closely with designers and artists to align mechanics and feel</li>
+          <li><strong>Team Collaboration:</strong> Worked closely with designers and artists</li>
         </ul>
       </section>
 
@@ -204,7 +247,7 @@ class USornCombatComponent : public UActorComponent
         <h3>Project Details</h3>
         <ul class="info-list">
           <li><span class="label">Role</span><span class="value">Gameplay Programmer</span></li>
-          <li><span class="label">Team Size</span><span class="value">Team of 15</span></li>
+          <li><span class="label">Team Size</span><span class="value">15</span></li>
           <li><span class="label">Duration</span><span class="value">6 Months</span></li>
           <li><span class="label">Platform</span><span class="value">PC</span></li>
           <li><span class="label">Engine</span><span class="value">Unreal Engine</span></li>
