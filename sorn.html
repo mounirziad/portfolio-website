@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nature's Solace – Mounir Ziad</title>
+  <title>S.O.R.N. – Mounir Ziad</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Minimal additions for indentation */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Keep your existing header layout but add brand */
     .logo-container {
       display: flex;
       align-items: center;
@@ -26,389 +24,234 @@
     }
   </style>
 </head>
+
 <body>
- <header>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <div class="logo-container">
-        <div class="logo">Mounir Ziad</div>
-        <div class="brand">Game Developer</div>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+<header>
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="logo-container">
+      <div class="logo">Mounir Ziad</div>
+      <div class="brand">Game Developer</div>
     </div>
-  </header>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
 
+<main id="sorn-page" class="project-page">
 
-  <main id="naturessolace-page" class="project-page">
-    <div class="project-page-header">
-      <h1>Nature's Solace</h1>
-      <div class="project-meta-large">
-        <span class="project-tag">Unity</span>
-        <span class="project-tag">C#</span>
-        <span class="project-tag">Environmental</span>
-        <span class="project-tag">Team Leadership</span>
-        <span class="project-tag">Game Design</span>
-      </div>
+  <div class="project-page-header">
+    <h1>S.O.R.N.</h1>
+    <div class="project-meta-large">
+      <span class="project-tag">Unreal Engine</span>
+      <span class="project-tag">C++</span>
+      <span class="project-tag">Gameplay Systems</span>
+      <span class="project-tag">Third-Person Combat</span>
+      <span class="project-tag">Team Project</span>
     </div>
+  </div>
 
-    <!-- IMAGES MOVED TO TOP -->
-    <section class="project-media">
-      <div class="image-gallery">
-        <div class="gallery-item">
-          <img src="https://img.itch.zone/aW1hZ2UvMzQ5MzczOS8yMDg2ODA4Ni5qcGVn/794x1000/cM8bpx.jpeg" alt="World transformation from grayscale to color">
-          <div class="image-caption">
-            <strong>World Transformation:</strong> Dynamic color restoration system that transitions the environment from grayscale to vibrant colors based on player progress
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwNS5wbmc=/347x500/fmlJOM.png" alt="Plant watering interaction system">
-          <div class="image-caption">
-            <strong>Interactive Growth:</strong> Plant watering mechanics with real-time growth animations and visual feedback systems
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://img.itch.zone/aW1hZ2UvMzQxMTQxMS8yMDk0NTcwMy5wbmc=/347x500/Q4FAMx.png" alt="Player cabin and character controller">
-          <div class="image-caption">
-            <strong>Character Environment:</strong> Smooth player controller with atmospheric audio and interaction systems in the cabin hub
-          </div>
+  <!-- MEDIA (PLACEHOLDERS FOR NOW) -->
+  <section class="project-media">
+    <div class="image-gallery">
+      <div class="gallery-item">
+        <img src="placeholder1.jpg" alt="High-mobility mech combat">
+        <div class="image-caption">
+          <strong>High-Mobility Combat:</strong> Fast-paced third-person mech movement with boost-driven traversal and evasive maneuvers
         </div>
       </div>
-    </section>
-
-    <div class="project-content">
-      <div class="project-details">
-        <section class="project-overview">
-          <h2>Project Overview</h2>
-          <p>
-            <strong>Nature's Solace</strong> is a meditative environmental experience that explores the bond between human emotion and the natural world. 
-            As Team Lead Developer at Studio Friendship, I orchestrated the technical vision for this immersive journey where players restore color and life 
-            to a grayscale world through emotional connection with nature.
-          </p>
-          <p>
-            The project combines sophisticated technical systems with emotional storytelling, featuring dynamic world transformation, 
-            interactive plant growth mechanics, and a seamless player experience that evolves based on player interaction.
-          </p>
-        </section>
-
-        <section class="project-features">
-          <h2>Core Technical Systems</h2>
-          
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h3>🌱 Dynamic Plant Growth System</h3>
-              <p>Interactive plant mechanics that respond to player actions with smooth animations and visual feedback.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C#</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>public class PlantGrowth : MonoBehaviour
-{
-    [Header("Growth Settings")]
-    public float growthAmount = 0.1f; // Growth per water interaction
-    public float maxScale = 2f;       // Maximum plant size
-    public float growthDuration = 1f; // Animation timing
-    
-    private Vector3 targetScale;
-    private bool isGrowing;
-    private float growthProgress;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            GrowPlant();
-            playerManager.SetSpirit(10f); // Reward player
-            Destroy(other.gameObject);    // Remove water sphere
-        }
-    }
-
-    public void GrowPlant()
-    {
-        if (transform.localScale.x >= maxScale) return;
-
-        targetScale = Vector3.Min(
-            transform.localScale + (Vector3.one * growthAmount),
-            initialScale * maxScale
-        );
-
-        growthProgress = 0f;
-        isGrowing = true;
-        
-        // Smooth growth animation with optional wiggle effect
-        transform.localScale = Vector3.Lerp(
-            transform.localScale, 
-            targetScale, 
-            growthProgress
-        );
-    }
-}</code>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <h3>🎨 World Color Transformation</h3>
-              <p>Dynamic material system that transitions the world from grayscale to vibrant colors based on player progress.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C#</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>public class ChangeMaterial : MonoBehaviour
-{
-    private Renderer objectRenderer;
-    private Material objectMaterial;
-    
-    private IEnumerator GrayToColor()
-    {
-        float elapsedTime = 0f;
-        float timeToChange = 2f;
-
-        while (elapsedTime < timeToChange)
-        {
-            elapsedTime += Time.deltaTime;
-            // Smooth saturation transition from 0 (grayscale) to 1 (full color)
-            objectMaterial.SetFloat("_saturation", 
-                Mathf.Lerp(0, 1, elapsedTime / timeToChange)
-            );
-            yield return null;
-        }
-    }
-
-    void Update()
-    {
-        // Activate color transformation when player achieves milestones
-        if (gameManager.GetComponent<GameManager>().inColor == true)
-        {
-            StartCoroutine(GrayToColor());
-        }
-    }
-}</code>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <h3>🚶 Advanced Player Controller</h3>
-              <p>Smooth character movement with audio feedback, interaction systems, and save/load functionality.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C#</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>public class PlayerMovement : MonoBehaviour
-{
-    [Header("Movement")]
-    public float speed;
-    public Vector2 move;
-    private Rigidbody rb;
-    
-    [Header("Audio")]
-    [SerializeField] private AudioSource footsteps;
-    private bool isMoving = false;
-
-    void MovePlayer()
-    {
-        Vector3 moveDirection = orientation.forward * move.y + orientation.right * move.x;
-        rb.linearVelocity = moveDirection * speed;
-
-        // Dynamic audio system
-        bool wasMoving = isMoving;
-        isMoving = move.magnitude > 0.1f;
-
-        if (isMoving && !wasMoving)
-        {
-            footsteps.loop = true;
-            footsteps.Play(); // Start footsteps when moving
-        }
-        else if (!isMoving && wasMoving)
-        {
-            footsteps.loop = false;
-            footsteps.Stop(); // Stop when stationary
-        }
-    }
-
-    // Save system integration
-    public void Save(ref PlayerSaveData data)
-    {
-        data.Position = transform.position;
-        data.Spirit = currentSpirit;
-    }
-}</code>
-              </div>
-            </div>
-
-            <div class="feature-card">
-              <h3>🏗️ Scalable Architecture</h3>
-              <p>Modular systems design allowing for easy expansion and team collaboration.</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span class="code-language">C#</span>
-                  <button class="code-copy">📋 Copy</button>
-                </div>
-                <code>[System.Serializable]
-public struct PlayerSaveData
-{
-    public Vector3 Position;
-    public float Spirit;
-    public float MaxSpirit;
-}
-
-// Interface for interactive objects
-public interface IInteractable 
-{
-    void Interact(PlayerMovement player);
-}
-
-// Dialogue system integration
-[SerializeField] private DialogueUI dialogueUI;
-public IInteractable Interactable { get; set; }
-
-void Update()
-{
-    if (Input.GetKeyDown(KeyCode.E) && Interactable != null)
-    {
-        Interactable.Interact(this); // Unified interaction system
-    }
-}</code>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="project-highlights">
-          <h2>Technical Leadership & Systems Design</h2>
-          <ul>
-            <li><strong>Team Leadership:</strong> Directed a large development team, establishing coding standards, version control workflows, and modular architecture patterns</li>
-            <li><strong>Explorable Hub Design:</strong> Created comprehensive navigation systems with optimized collision detection and spatial audio placement</li>
-            <li><strong>Dynamic Cutscenes:</strong> Programmed event-driven cinematic sequences that seamlessly integrate with gameplay</li>
-            <li><strong>Audio Integration:</strong> Developed original game music and implemented dynamic audio systems with spatial positioning</li>
-            <li><strong>Performance Optimization:</strong> Built scalable state machines and object pooling systems for efficient memory management</li>
-            <li><strong>Terrain Systems:</strong> Managed large-scale terrain data to support expansive, immersive environments with optimized rendering</li>
-          </ul>
-        </section>
+      <div class="gallery-item">
+        <img src="placeholder2.jpg" alt="Lock-on combat system">
+        <div class="image-caption">
+          <strong>Lock-On Gunplay:</strong> Target-focused combat flow designed for readability and mechanical precision
+        </div>
       </div>
-
-      <div class="project-sidebar">
-        <div class="info-card">
-          <h3>Project Details</h3>
-          <ul class="info-list">
-            <li>
-              <span class="label">Role</span>
-              <span class="value">Team Lead Dev</span>
-            </li>
-            <li>
-              <span class="label">Studio</span>
-              <span class="value">Studio Friendship</span>
-            </li>
-            <li>
-              <span class="label">Duration</span>
-              <span class="value">Mar - May 2025</span>
-            </li>
-            <li>
-              <span class="label">Team Size</span>
-              <span class="value">7 Person Team</span>
-            </li>
-            <li>
-              <span class="label">Platform</span>
-              <span class="value">PC</span>
-            </li>
-            <li>
-              <span class="label">Engine</span>
-              <span class="value">Unity</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>Technical Stack</h3>
-          <ul class="info-list">
-            <li>Unity Engine</li>
-            <li>C# Programming</li>
-            <li>Shader Graph</li>
-            <li>Unity Input System</li>
-            <li>Rigidbody Physics</li>
-            <li>Audio Mixer</li>
-            <li>Coroutine Systems</li>
-            <li>Serialization</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>Key Features</h3>
-          <ul class="info-list">
-            <li>Dynamic World Coloring</li>
-            <li>Interactive Plant Growth</li>
-            <li>Smooth Character Controller</li>
-            <li>Atmospheric Audio Design</li>
-            <li>Save/Load System</li>
-            <li>Dialogue Integration</li>
-            <li>Modular Architecture</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <h3>Achievements</h3>
-          <ul class="info-list">
-            <li>Led Technical Vision</li>
-            <li>Optimized Performance</li>
-            <li>Created Emotional Arc</li>
-            <li>Built Scalable Systems</li>
-            <li>Integrated Multiple Systems</li>
-            <li>Mentored Team Members</li>
-          </ul>
+      <div class="gallery-item">
+        <img src="placeholder3.jpg" alt="Mission-based level design">
+        <div class="image-caption">
+          <strong>Mission Structure:</strong> Modular objectives supporting sabotage, combat encounters, and extraction
         </div>
       </div>
     </div>
+  </section>
 
-    <section class="project-repo">
-      <h3>Play & Explore</h3>
-      <div class="btn-group">
-        <a href="https://remyregaspi.itch.io/natures-solace" class="btn btn-primary" target="_blank">
-          🎮 Play on itch.io
-        </a>
-        <a href="https://github.com/kingkaue/DIG-4715-Final" class="btn btn-secondary" target="_blank">
-          💻 View Source Code
-        </a>
-        <a href="projects.html" class="btn">
-          ← Back to Projects
-        </a>
+  <div class="project-content">
+    <div class="project-details">
+
+      <section class="project-overview">
+        <h2>Project Overview</h2>
+        <p>
+          <strong>S.O.R.N.</strong> is a third-person mech action game focused on high-speed movement,
+          lock-on–driven combat, and tightly structured mission gameplay. Developed as a student team project,
+          the game emphasizes mechanical clarity, player expression through mobility, and modular gameplay systems.
+        </p>
+        <p>
+          My contributions centered on gameplay programming and systems design, supporting movement states,
+          combat flow, and data-driven mission logic within Unreal Engine.
+        </p>
+      </section>
+
+      <section class="project-features">
+        <h2>Core Gameplay Systems</h2>
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+            <h3>🤖 Mech Movement & State Logic</h3>
+            <p>
+              High-mobility traversal system supporting boosts, strafing, and rapid directional changes,
+              designed to maintain responsiveness during combat.
+            </p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+              </div>
+<code>// Example: simplified movement state handling
+void ASornMech::HandleMovementState()
+{
+    if (bIsBoosting)
+    {
+        CurrentSpeed = BoostSpeed;
+    }
+    else
+    {
+        CurrentSpeed = BaseSpeed;
+    }
+}</code>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h3>🎯 Lock-On Combat Flow</h3>
+            <p>
+              Target-locking system built to support readable encounters,
+              weapon accuracy, and consistent camera framing during combat.
+            </p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+              </div>
+<code>// Target acquisition logic (simplified)
+void ASornCombatComponent::LockOnTarget(AActor* NewTarget)
+{
+    CurrentTarget = NewTarget;
+    bIsLockedOn = (CurrentTarget != nullptr);
+}</code>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h3>🧠 Mission & Objective Systems</h3>
+            <p>
+              Data-driven mission logic allowing objectives to be chained,
+              failed, or completed dynamically during gameplay.
+            </p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+              </div>
+<code>// Mission state progression
+void UMissionComponent::AdvanceObjective()
+{
+    CurrentObjectiveIndex++;
+    OnObjectiveUpdated.Broadcast(CurrentObjectiveIndex);
+}</code>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h3>🏗️ Modular Gameplay Architecture</h3>
+            <p>
+              Component-based design enabling parallel development and
+              rapid iteration across movement, combat, and AI systems.
+            </p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-language">C++</span>
+              </div>
+<code>// Example gameplay component
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class USornCombatComponent : public UActorComponent
+{
+    GENERATED_BODY()
+};</code>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="project-highlights">
+        <h2>Technical Contributions</h2>
+        <ul>
+          <li><strong>Gameplay Programming:</strong> Implemented and refined movement, combat, and mission systems</li>
+          <li><strong>Combat Readability:</strong> Tuned lock-on behavior and camera logic for clarity</li>
+          <li><strong>System Modularity:</strong> Built extensible components to support team iteration</li>
+          <li><strong>Unreal Workflow:</strong> Integrated C++ systems with Blueprint-driven tuning</li>
+          <li><strong>Team Collaboration:</strong> Worked closely with designers and artists to align mechanics and feel</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="project-sidebar">
+
+      <div class="info-card">
+        <h3>Project Details</h3>
+        <ul class="info-list">
+          <li><span class="label">Role</span><span class="value">Gameplay Programmer</span></li>
+          <li><span class="label">Team Size</span><span class="value">Student Team</span></li>
+          <li><span class="label">Duration</span><span class="value">6 Months</span></li>
+          <li><span class="label">Platform</span><span class="value">PC</span></li>
+          <li><span class="label">Engine</span><span class="value">Unreal Engine</span></li>
+        </ul>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <p>© 2025 Mounir Ziad</p>
-  </footer>
+      <div class="info-card">
+        <h3>Technical Stack</h3>
+        <ul class="info-list">
+          <li>Unreal Engine</li>
+          <li>C++ Gameplay Programming</li>
+          <li>Blueprint Integration</li>
+          <li>Component-Based Architecture</li>
+          <li>Third-Person Camera Systems</li>
+        </ul>
+      </div>
 
-  <script>
-    // Copy code functionality
-    document.querySelectorAll('.code-copy').forEach(button => {
-      button.addEventListener('click', function() {
-        const codeBlock = this.closest('.code-block').querySelector('code');
-        const textArea = document.createElement('textarea');
-        textArea.value = codeBlock.textContent;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        // Visual feedback
-        const originalText = this.textContent;
-        this.textContent = '✅ Copied!';
-        setTimeout(() => {
-          this.textContent = originalText;
-        }, 2000);
-      });
-    });
-  </script>
+      <div class="info-card">
+        <h3>Key Focus Areas</h3>
+        <ul class="info-list">
+          <li>High-Speed Movement</li>
+          <li>Combat Systems</li>
+          <li>Mission Flow</li>
+          <li>Player Readability</li>
+          <li>System Modularity</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="project-repo">
+    <h3>Explore the Project</h3>
+    <div class="btn-group">
+      <a href="#" class="btn btn-secondary" target="_blank">
+        💻 View Source (Private / On Request)
+      </a>
+      <a href="projects.html" class="btn">
+        ← Back to Projects
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Mounir Ziad</p>
+</footer>
+
 </body>
 </html>
-
-
-
-
-
