@@ -52,25 +52,25 @@ header {
 .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; transition: 0.3s; }
 .nav-links a:hover { color: var(--accent-primary); }
 
-/* --- Hero Section & Profile --- */
+/* --- Hero Section & Profile Circle --- */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; }
 .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; width: 100%; }
 .hero h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
 .accent { color: var(--accent-primary); }
 .hero p { max-width: 600px; font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; }
 
-/* Profile Circle Fix */
 .profile-frame { position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; }
 .profile-img-container { width: 260px; height: 260px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border); z-index: 2; background: var(--bg-primary); }
 .profile-img { width: 100%; height: 100%; object-fit: cover; }
 .profile-glow { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-primary), transparent, var(--accent-primary)); animation: rotateGlow 5s linear infinite; filter: blur(12px); opacity: 0.4; }
 @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* --- HOMEPAGE PROJECT GRID (SPACIOUS) --- */
+/* --- HOMEPAGE PROJECT GRID (THE BOX FIX) --- */
 .projects-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Increased min-width for square look */
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
     gap: 2.5rem; 
+    width: 100%;
 }
 
 .project-card {
@@ -82,13 +82,12 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 480px; /* Forces cards to have vertical presence */
+    min-height: 500px; /* Ensures a consistent box shape */
 }
 
-/* Fixes the "Extremely Thin" issue */
 .project-card .project-image { 
     width: 100%; 
-    height: 240px; /* Fixed height for homepage thumbs */
+    height: 240px; 
     overflow: hidden; 
     border-bottom: 1px solid var(--border); 
 }
@@ -103,62 +102,81 @@ header {
 
 .project-card:hover .project-image img { filter: grayscale(0%) brightness(1); transform: scale(1.08); }
 
-/* Spotlight Effect on Cards */
+/* Spotlight Effect */
 .project-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(58, 134, 255, 0.15), transparent 40%);
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(58, 134, 255, 0.12), transparent 40%);
     border-radius: inherit; z-index: 0; pointer-events: none;
 }
 
 .project-card:hover { transform: translateY(-10px); border-color: var(--accent-primary); }
+
 .project-header { padding: 1.8rem; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
-.project-body { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 1; }
+.project-body { 
+    padding: 1.8rem; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.project-body p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    /* Keeps the boxes uniform by limiting text */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .project-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-primary); background: #1a1a20; padding: 3px 10px; border-radius: 4px; margin-right: 6px; }
 
-/* --- DEEP DIVE SPECIFIC STYLES --- */
+/* --- DEEP DIVE / PROJECT PAGE STYLES --- */
 .deep-dive-page { padding-top: 120px; }
 .project-hero h1 { font-size: 4rem; margin-bottom: 1rem; }
 .project-meta-large { margin-bottom: 3.5rem; display: flex; gap: 12px; }
 
-/* Side-by-side Hero Section (For Nature's Solace / White Maw) */
+/* Fixed side-by-side Hero for Nature's Solace / White Maw */
 .hero-image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 4rem;
-    height: 400px;
+    height: 400px; /* Prevents vertical stretching */
 }
 .hero-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.4s; }
 .hero-item img { width: 100%; height: 100%; object-fit: cover; }
-.hero-item:hover { transform: scale(1.02); border-color: var(--accent-primary); }
+.hero-item:hover { border-color: var(--accent-primary); }
 
-/* Technical Gallery (Smaller context images) */
+/* Technical Gallery Grid */
 .project-gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
 .gallery-item { background: var(--bg-tertiary); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
 .gallery-item img { width: 100%; height: auto; max-height: 400px; object-fit: cover; }
 .gallery-item .caption { padding: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; border-top: 1px solid var(--border); }
 
-/* Video Container */
+/* Video Handling */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; background: var(--bg-tertiary); border: 1px solid var(--border); margin-bottom: 4rem; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-/* Deep Dive Content Grid */
+/* Sidebar & Content Layout */
 .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; margin-bottom: 8rem; }
 .main-content h2 { margin-top: 3rem; color: var(--text-main); font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 1.5rem; }
 .main-content p { font-size: 1.15rem; margin-bottom: 1.8rem; color: var(--text-muted); }
 
-/* Sidebar */
 .sticky-box { position: sticky; top: 120px; background: var(--bg-secondary); padding: 2.5rem; border-radius: 15px; border: 1px solid var(--border); }
 .spec-list { list-style: none; padding: 0; margin: 2rem 0; }
 .spec-list li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.95rem; }
 .spec-list li strong { color: var(--accent-primary); font-family: var(--font-mono); }
 
-/* --- COMMON BUTTONS --- */
+/* --- COMMON UI --- */
 .btn { font-family: var(--font-mono); text-decoration: none; display: inline-block; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; text-align: center; }
-.btn-primary { background: var(--accent-primary); color: white; box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3); }
-.btn-secondary { border: 1px solid var(--border); color: var(--text-main); }
+.btn-primary { background: var(--accent-primary); color: white; box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3); border: none; }
+.btn-secondary { border: 1px solid var(--border); color: var(--text-main); background: transparent; }
 .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.8rem; background-color: #ffffff; color: #000000; border: 1px solid #ffffff; width: fit-content; margin-top: 1rem; }
 .btn-sm:hover { background-color: var(--accent-primary); border-color: var(--accent-primary); color: #000000; }
 
@@ -166,11 +184,12 @@ header {
 .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
 .is-visible { opacity: 1; transform: translateY(0); }
 
-/* Mobile */
+/* --- Mobile Fixes --- */
 @media (max-width: 1024px) {
     .content-grid { grid-template-columns: 1fr; }
     .hero-content { grid-template-columns: 1fr; text-align: center; }
     .hero-visual { order: -1; justify-content: center; }
     .projects-grid { grid-template-columns: 1fr; }
     .hero-image-grid { grid-template-columns: 1fr; height: auto; }
+    .hero h1 { font-size: 2.8rem; }
 }
