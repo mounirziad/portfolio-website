@@ -26,7 +26,7 @@ body {
 .flex-between { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .section { padding: 6rem 0; }
 
-/* --- FIXED: Header Logic --- */
+/* --- Fixed Header --- */
 header {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -35,7 +35,6 @@ header {
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
-    background: transparent; /* Initial state */
 }
 
 .header-scrolled {
@@ -53,50 +52,26 @@ header {
 .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; transition: 0.3s; }
 .nav-links a:hover { color: var(--accent-primary); }
 
-/* --- Hero Section & FIXED: Circular Profile --- */
+/* --- Hero Section & Profile --- */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; }
 .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; width: 100%; }
 .hero h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
 .accent { color: var(--accent-primary); }
 .hero p { max-width: 600px; font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; }
 
-/* The Profile Logic */
-.profile-frame { 
-    position: relative; 
-    width: 300px; 
-    height: 300px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
-
-.profile-img-container { 
-    width: 260px; 
-    height: 260px; 
-    border-radius: 50%; 
-    overflow: hidden; 
-    border: 2px solid var(--border); 
-    z-index: 2; 
-    background: var(--bg-primary); 
-}
-
+/* Profile Circle Fix */
+.profile-frame { position: relative; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center; }
+.profile-img-container { width: 260px; height: 260px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border); z-index: 2; background: var(--bg-primary); }
 .profile-img { width: 100%; height: 100%; object-fit: cover; }
-
-.profile-glow { 
-    position: absolute; 
-    width: 280px; 
-    height: 280px; 
-    border-radius: 50%; 
-    background: linear-gradient(45deg, var(--accent-primary), transparent, var(--accent-primary)); 
-    animation: rotateGlow 5s linear infinite; 
-    filter: blur(12px); 
-    opacity: 0.4; 
-}
-
+.profile-glow { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-primary), transparent, var(--accent-primary)); animation: rotateGlow 5s linear infinite; filter: blur(12px); opacity: 0.4; }
 @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-/* --- Homepage Project Grid --- */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+/* --- HOMEPAGE PROJECT GRID (SPACIOUS) --- */
+.projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Increased min-width for square look */
+    gap: 2.5rem; 
+}
 
 .project-card {
     background: var(--bg-tertiary);
@@ -107,61 +82,95 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    min-height: 480px; /* Forces cards to have vertical presence */
 }
 
-.project-image { width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--border); }
-.project-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.6); transition: 0.6s; }
+/* Fixes the "Extremely Thin" issue */
+.project-card .project-image { 
+    width: 100%; 
+    height: 240px; /* Fixed height for homepage thumbs */
+    overflow: hidden; 
+    border-bottom: 1px solid var(--border); 
+}
+
+.project-card .project-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: grayscale(100%) brightness(0.6); 
+    transition: 0.6s cubic-bezier(0.33, 1, 0.68, 1); 
+}
+
 .project-card:hover .project-image img { filter: grayscale(0%) brightness(1); transform: scale(1.08); }
 
+/* Spotlight Effect on Cards */
 .project-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(58, 134, 255, 0.1), transparent 40%);
-    z-index: 0; pointer-events: none;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(58, 134, 255, 0.15), transparent 40%);
+    border-radius: inherit; z-index: 0; pointer-events: none;
 }
 
-.project-card:hover { transform: translateY(-8px); border-color: var(--accent-primary); }
-.project-header, .project-body { position: relative; z-index: 1; padding: 1.8rem; }
-.project-header { border-bottom: 1px solid var(--border); }
-.project-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-primary); background: #1a1a20; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+.project-card:hover { transform: translateY(-10px); border-color: var(--accent-primary); }
+.project-header { padding: 1.8rem; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+.project-body { padding: 1.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 1; }
+.project-tag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-primary); background: #1a1a20; padding: 3px 10px; border-radius: 4px; margin-right: 6px; }
 
-/* --- Deep Dive Project Pages Styles --- */
+/* --- DEEP DIVE SPECIFIC STYLES --- */
 .deep-dive-page { padding-top: 120px; }
-.project-hero h1 { font-size: 4.2rem; margin-bottom: 1rem; }
+.project-hero h1 { font-size: 4rem; margin-bottom: 1rem; }
 .project-meta-large { margin-bottom: 3.5rem; display: flex; gap: 12px; }
 
-.hero-image-grid { display: flex; gap: 1.5rem; width: 100%; margin-bottom: 4rem; height: 400px; }
-.hero-image-grid .hero-item { flex: 1; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.5s; }
-.hero-image-grid .hero-item img { width: 100%; height: 100%; object-fit: cover; }
-.hero-image-grid .hero-item:hover { flex: 1.8; border-color: var(--accent-primary); }
+/* Side-by-side Hero Section (For Nature's Solace / White Maw) */
+.hero-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    height: 400px;
+}
+.hero-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.4s; }
+.hero-item img { width: 100%; height: 100%; object-fit: cover; }
+.hero-item:hover { transform: scale(1.02); border-color: var(--accent-primary); }
 
+/* Technical Gallery (Smaller context images) */
 .project-gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
 .gallery-item { background: var(--bg-tertiary); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-.gallery-item img { width: 100%; height: auto; max-height: 350px; object-fit: cover; border-bottom: 1px solid var(--border); }
-.gallery-item .caption { padding: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+.gallery-item img { width: 100%; height: auto; max-height: 400px; object-fit: cover; }
+.gallery-item .caption { padding: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; border-top: 1px solid var(--border); }
 
+/* Video Container */
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; background: var(--bg-tertiary); border: 1px solid var(--border); margin-bottom: 4rem; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+/* Deep Dive Content Grid */
 .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; margin-bottom: 8rem; }
 .main-content h2 { margin-top: 3rem; color: var(--text-main); font-size: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 1.5rem; }
 .main-content p { font-size: 1.15rem; margin-bottom: 1.8rem; color: var(--text-muted); }
 
+/* Sidebar */
 .sticky-box { position: sticky; top: 120px; background: var(--bg-secondary); padding: 2.5rem; border-radius: 15px; border: 1px solid var(--border); }
 .spec-list { list-style: none; padding: 0; margin: 2rem 0; }
 .spec-list li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.95rem; }
-.spec-list li strong { color: var(--accent-primary); font-family: var(--font-mono); font-weight: normal; }
+.spec-list li strong { color: var(--accent-primary); font-family: var(--font-mono); }
 
-/* Buttons */
-.btn { font-family: var(--font-mono); text-decoration: none; display: inline-block; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; text-align: center; cursor: pointer; border: none; }
+/* --- COMMON BUTTONS --- */
+.btn { font-family: var(--font-mono); text-decoration: none; display: inline-block; padding: 0.9rem 1.8rem; border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; text-align: center; }
 .btn-primary { background: var(--accent-primary); color: white; box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3); }
-.btn-secondary { border: 1px solid var(--border); color: var(--text-main); background: transparent; }
+.btn-secondary { border: 1px solid var(--border); color: var(--text-main); }
+.btn-sm { padding: 0.6rem 1.2rem; font-size: 0.8rem; background-color: #ffffff; color: #000000; border: 1px solid #ffffff; width: fit-content; margin-top: 1rem; }
+.btn-sm:hover { background-color: var(--accent-primary); border-color: var(--accent-primary); color: #000000; }
 
 /* Animations */
-.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
 .is-visible { opacity: 1; transform: translateY(0); }
 
-/* Mobile Fixes */
+/* Mobile */
 @media (max-width: 1024px) {
     .content-grid { grid-template-columns: 1fr; }
-    .hero-image-grid { flex-direction: column; height: auto; }
-    .hero-image-grid .hero-item { height: 250px; }
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { order: -1; justify-content: center; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-image-grid { grid-template-columns: 1fr; height: auto; }
 }
