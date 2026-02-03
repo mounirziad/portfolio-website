@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhiteMaw | Mounir Ziad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-page">
+    <header id="main-header" class="header-scrolled">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mounir Ziad</a>
+                <div class="brand">Game Developer</div>
+            </div>
+            <nav><ul class="nav-links"><li><a href="index.html#projects">← Back to Projects</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-hero reveal-on-scroll">
+            <h1 class="accent">WhiteMaw</h1>
+            <div class="project-meta-large">
+                <span class="project-tag">Unity 6</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">AI Systems</span>
+                <span class="project-tag">Survival Horror</span>
+            </div>
+        </section>
+
+        <section class="hero-image-grid reveal-on-scroll">
+            <div class="hero-item">
+                <img src="images/whitemaw-thumb.png" alt="WhiteMaw Atmosphere">
+            </div>
+            <div class="hero-item">
+                <img src="images/whitemaw-1.png" alt="Heat System UI">
+            </div>
+            <div class="hero-item">
+                <img src="images/whitemaw-2.png" alt="Breathing Mini-game">
+            </div>
+        </section>
+
+        <div class="content-grid">
+            <div class="main-content reveal-on-scroll">
+                <h2>Project Overview</h2>
+                <p>WhiteMaw is an intense wilderness survival horror game built in Unity 6. Players must survive a harrowing night in the snowy mountains while being hunted by a terrifying, intelligent predator. The project serves as a deep technical exploration of Finite State Machine (FSM) AI and dynamic resource management.</p>
+
+                <h2>Advanced Yeti AI System</h2>
+                <p>The core of WhiteMaw is a sophisticated 6-state AI system for the Yeti predator. Utilizing NavMesh pathfinding and circular patrol patterns, the AI transition logic handles states ranging from passive patrolling to aggressive hunting. The AI is highly noise-reactive; it intelligently investigates sound locations based on player actions like stoking campfires or rapid movement.</p>
+                
+                <h2>Dual Survival Resource Management</h2>
+                <p>I engineered a real-time hunger and heat depletion system. Unlike traditional static bars, these systems are deeply integrated with the player controller. Depleting heat triggers cold-induced camera shivers, while low hunger values dynamically scale movement speed, forcing strategic resource management.</p>
+
+                <h2>Technical Architecture</h2>
+                <p>By implementing a modular state machine, I achieved seamless transitions between Stalking, Investigating, and Waiting behaviors. The NavMesh integration allows the predator to traverse complex mountain terrain, while a dynamic noise detection system ensures the threat level is constantly evolving based on player footsteps and interactive systems.</p>
+            </div>
+
+            <aside class="sidebar reveal-on-scroll">
+                <div class="sticky-box">
+                    <h3>Technical Specs</h3>
+                    <ul class="spec-list">
+                        <li><strong>Engine</strong> <strong>Unity 6 (6000.2)</strong></li>
+                        <li><strong>AI Logic</strong> <strong>FSM / NavMesh</strong></li>
+                        <li><strong>Duration</strong> <strong>3 Days (Sprint)</strong></li>
+                    </ul>
+                    <div class="btn-group" style="flex-direction: column; margin-top: 2rem;">
+                        <a href="https://github.com/kingkaue/ProjectYeti" class="btn btn-primary" style="width:100%">View Source Code</a>
+                        <a href="https://frogsonalog.itch.io/white-maw" class="btn btn-secondary" style="width:100%">Play on itch.io</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

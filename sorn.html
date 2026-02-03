@@ -1,306 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S.O.R.N. – Mounir Ziad</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand {
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* Video embed - UPDATED */
-    .project-video {
-      margin: 40px 0;
-      width: 100%;
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      background-color: var(--bg-tertiary);
-      border: 1px solid var(--border-color);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-caption {
-      margin-top: 10px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.R.N. | Mounir Ziad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
-
-<body>
-<header>
-  <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-    <div class="logo-container">
-      <div class="logo">Mounir Ziad</div>
-      <div class="brand">Game Developer</div>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</header>
-
-<main id="sorn-page" class="project-page">
-
-  <div class="project-page-header">
-    <h1>S.O.R.N.</h1>
-    <div class="project-meta-large">
-      <span class="project-tag">Unreal Engine</span>
-      <span class="project-tag">C++</span>
-      <span class="project-tag">Gameplay Systems</span>
-      <span class="project-tag">Third-Person Combat</span>
-      <span class="project-tag">Team Project</span>
-    </div>
-  </div>
-
-  <!-- GAMEPLAY VIDEO - UPDATED -->
-  <section class="project-video">
-    <div class="video-container">
-      <iframe
-  src="https://www.youtube.com/embed/f8_dOA7EJJQ?start=174&rel=0&enablejsapi=1"
-  title="S.O.R.N. Gameplay Demo"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerpolicy="strict-origin-when-cross-origin"
-  allowfullscreen>
-</iframe>
-    </div>
-    <p class="video-caption">
-      Gameplay footage highlighting high-speed mech movement, lock-on combat, and mission flow.
-    </p>
-  </section>
-
-  <!-- MEDIA (PLACEHOLDERS FOR NOW) -->
-  <section class="project-media">
-    <div class="image-gallery">
-      <div class="gallery-item">
-<img src="images/placeholder1.jpg" alt="High-mobility mech combat">        <div class="image-caption">
-          <strong>High-Mobility Combat:</strong> Fast-paced third-person mech movement with boost-driven traversal and evasive maneuvers
-        </div>
-      </div>
-      <div class="gallery-item">
-<img src="images/placeholder2.jpg" alt="Lock-on combat system">        <div class="image-caption">
-          <strong>Lock-On Gunplay:</strong> Target-focused combat flow designed for readability and mechanical precision
-        </div>
-      </div>
-      <div class="gallery-item">
-<img src="images/placeholder3.jpg" alt="Mission-based level design">        <div class="image-caption">
-          <strong>Mission Structure:</strong> Modular objectives supporting sabotage, combat encounters, and extraction
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="project-content">
-    <div class="project-details">
-
-      <section class="project-overview">
-        <h2>Project Overview</h2>
-        <p>
-          <strong>S.O.R.N.</strong> is a third-person mech action game focused on high-speed movement,
-          lock-on–driven combat, and tightly structured mission gameplay. Developed as a large team passion project,
-          the game emphasizes mechanical clarity, player expression through mobility, multiplayer compatibility,
-          and modular gameplay systems.
-        </p>
-        <p>
-          My contributions centered on gameplay programming and systems design, supporting movement states,
-          combat flow, dialogue systems, and data-driven mission logic within Unreal Engine — all built with
-          multiplayer compatibility and gameplay bus functionality in mind.
-        </p>
-      </section>
-
-      <section class="project-features">
-        <h2>Core Gameplay Systems</h2>
-
-        <div class="feature-grid">
-
-          <div class="feature-card">
-            <h3>🤖 Mech Movement & State Logic</h3>
-            <p>
-              High-mobility traversal system supporting boosts, strafing, and rapid directional changes,
-              designed to maintain responsiveness during combat.
-            </p>
-            <div class="code-block">
-              <div class="code-header">
-                <span class="code-language">C++</span>
-              </div>
-<code>// Simplified movement state handling
-void ASornMech::HandleMovementState()
-{
-    if (bIsBoosting)
-    {
-        CurrentSpeed = BoostSpeed;
-    }
-    else
-    {
-        CurrentSpeed = BaseSpeed;
-    }
-}</code>
+<body class="deep-dive-page">
+    <header id="main-header" class="header-scrolled">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mounir Ziad</a>
+                <div class="brand">Game Developer</div>
             </div>
-          </div>
-
-          <div class="feature-card">
-            <h3>🎯 Lock-On Combat Flow</h3>
-            <p>
-              Target-locking system built to support readable encounters,
-              weapon accuracy, and consistent camera framing during combat.
-            </p>
-            <div class="code-block">
-              <div class="code-header">
-                <span class="code-language">C++</span>
-              </div>
-<code>// Target acquisition logic
-void ASornCombatComponent::LockOnTarget(AActor* NewTarget)
-{
-    CurrentTarget = NewTarget;
-    bIsLockedOn = (CurrentTarget != nullptr);
-}</code>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <h3>🧠 Mission & Objective Systems</h3>
-            <p>
-              Data-driven mission logic allowing objectives to be chained,
-              failed, or completed dynamically during gameplay.
-            </p>
-            <div class="code-block">
-              <div class="code-header">
-                <span class="code-language">C++</span>
-              </div>
-<code>// Mission state progression
-void UMissionComponent::AdvanceObjective()
-{
-    CurrentObjectiveIndex++;
-    OnObjectiveUpdated.Broadcast(CurrentObjectiveIndex);
-}</code>
-            </div>
-          </div>
-
-          <div class="feature-card">
-            <h3>🏗️ Modular Gameplay Architecture</h3>
-            <p>
-              Component-based design enabling parallel development and
-              rapid iteration across movement, combat, and AI systems.
-            </p>
-            <div class="code-block">
-              <div class="code-header">
-                <span class="code-language">C++</span>
-              </div>
-<code>UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class USornCombatComponent : public UActorComponent
-{
-    GENERATED_BODY()
-};</code>
-            </div>
-          </div>
-
+            <nav><ul class="nav-links"><li><a href="index.html#projects">← Back to Projects</a></li></ul></nav>
         </div>
-      </section>
+    </header>
 
-      <section class="project-highlights">
-        <h2>Technical Contributions</h2>
-        <ul>
-          <li><strong>Gameplay Programming:</strong> Implemented and refined movement, combat, and mission systems. Created and developed dialogue system that corresponds to mission system with multiplayer functionality.</li>
-          <li><strong>Combat Readability:</strong> Tuned lock-on behavior and camera logic</li>
-          <li><strong>System Modularity:</strong> Built extensible components to support team iteration</li>
-          <li><strong>Unreal Workflow:</strong> Integrated C++ systems with Blueprint-driven tuning</li>
-          <li><strong>Team Collaboration:</strong> Worked closely with designers and artists</li>
-        </ul>
-      </section>
+    <main class="container">
+        <section class="project-hero reveal-on-scroll">
+            <h1 class="accent">S.O.R.N.</h1>
+            <div class="project-meta-large">
+                <span class="project-tag">Unreal Engine 5</span>
+                <span class="project-tag">C++</span>
+                <span class="project-tag">Gameplay Systems</span>
+                <span class="project-tag">Multiplayer</span>
+            </div>
+        </section>
 
-    </div>
+        <section class="project-cover reveal-on-scroll">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/f8_dOA7EJJQ?start=174" allowfullscreen title="S.O.R.N. Gameplay Demo"></iframe>
+            </div>
+            <p class="video-caption">
+                <strong>Gameplay Demonstration:</strong> Highlighting high-speed mech movement, lock-on combat, and networked mission flow.
+            </p>
+        </section>
 
-    <div class="project-sidebar">
+        <div class="content-grid">
+            <div class="main-content reveal-on-scroll">
+                <h2>Project Overview</h2>
+                <p>S.O.R.N. is a third-person mech action game developed as a large-scale team passion project. The core design philosophy emphasizes mechanical clarity, player expression through high-mobility traversal, and modular technical architecture. Built within Unreal Engine 5, the project required a robust foundation to support complex networked interactions and fast-paced combat encounters.</p>
 
-      <div class="info-card">
-        <h3>Project Details</h3>
-        <ul class="info-list">
-          <li><span class="label">Role</span><span class="value">Gameplay Programmer</span></li>
-          <li><span class="label">Team Size</span><span class="value">15</span></li>
-          <li><span class="label">Duration</span><span class="value">6 Months</span></li>
-          <li><span class="label">Platform</span><span class="value">PC</span></li>
-          <li><span class="label">Engine</span><span class="value">Unreal Engine</span></li>
-        </ul>
-      </div>
+                <h2>Core Gameplay Systems</h2>
+                <h3>Mech Movement & State Logic</h3>
+                <p>I helped engineer a high-mobility traversal system supporting boosts, strafing, and rapid directional changes. By utilizing a custom movement state handler in C++, I ensured the mech remained responsive during intense combat while maintaining multiplayer synchronization across the Listen Server architecture.</p>
+                
+                <h3>Lock-On Combat Flow</h3>
+                <p>To support mechanical precision and readability, I developed a target-locking system. This component manages target acquisition, weapon accuracy modifiers, and consistent camera framing, allowing for fluid encounters that feel both powerful and controlled.</p>
 
-      <div class="info-card">
-        <h3>Technical Stack</h3>
-        <ul class="info-list">
-          <li>Unreal Engine</li>
-          <li>C++ Gameplay Programming</li>
-	  <li>Listen Server Multiplayer</li>
-          <li>Blueprint Integration</li>
-          <li>Component-Based Architecture</li>
-          <li>Third-Person Camera Systems</li>
-        </ul>
-      </div>
+                <div class="project-gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/sorn-1.jpg" alt="Mission Objective Logic">
+                        <p class="caption">Mission Architecture: Networked objective points and indoor mission flow logic.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/sorn-2.jpg" alt="Combat Systems">
+                        <p class="caption">Combat Readability: Testing lock-on framing and networked turret interactions.</p>
+                    </div>
+                </div>
 
-      <div class="info-card">
-        <h3>Key Focus Areas</h3>
-        <ul class="info-list">
-          <li>High-Speed Movement</li>
-          <li>Combat Systems</li>
-          <li>Mission Flow</li>
-          <li>Player Readability</li>
-          <li>System Modularity</li>
-        </ul>
-      </div>
+                <h2>Technical Contributions</h2>
+                <h3>Mission & Objective Systems</h3>
+                <p>I helped intigrate a data-driven mission logic system that allowed for dynamic objective chaining. This framework supports sabotage missions, defensive encounters, and extraction phases, all synchronized via a gameplay bus to ensure a consistent experience for all players in a session.</p>
 
-    </div>
-  </div>
+                <h3>Modular Gameplay Architecture</h3>
+                <p>Modularity was critical for a 15-person team. I implemented component-based systems for combat and movement, enabling parallel development. This allowed artists and designers to tune Blueprint variables and mission parameters without interfering with the core C++ systems, significantly speeding up iteration cycles.</p>
 
-<section class="project-repo">
-    <h3>Explore the Project</h3>
-    <div class="btn-group">
-      <a href="https://github.com/Joaqstarr/SORN" class="btn btn-secondary" target="_blank">
-        💻 View Source on GitHub
-      </a>
-      <a href="projects.html" class="btn">
-        ← Back to Projects
-      </a>
-    </div>
-  </section>
+                <h3>Multiplayer Dialogue System</h3>
+                <p>I created a dialogue system that corresponds directly to the mission state logic. It features multiplayer functionality, ensuring that narrative triggers and mission-critical information are broadcasted correctly to all clients during live gameplay.</p>
+            </div>
 
-</main>
+            <aside class="sidebar reveal-on-scroll">
+                <div class="sticky-box">
+                    <h3>Project Details</h3>
+                    <ul class="spec-list">
+                        <li><strong>Role</strong> <strong>Gameplay Programmer</strong></li>
+                        <li><strong>Team Size</strong> <strong>15 Members</strong></li>
+                        <li><strong>Duration</strong> <strong>6 Months</strong></li>
+                        <li><strong>Engine</strong> <strong>Unreal Engine 5</strong></li>
+                        <li><strong>Platform</strong> <strong>PC</strong></li>
+                    </ul>
+                    
+                    <h3>Technical Stack</h3>
+                    <ul class="spec-list">
+                        <li><strong>C++ Gameplay Programming</strong></li>
+                        <li><strong>Listen Server Multiplayer</strong></li>
+                        <li><strong>Blueprint Integration</strong></li>
+                        <li><strong>Component-Based Design</strong></li>
+                    </ul>
 
-<footer>
-  <p>© 2025 Mounir Ziad</p>
-</footer>
+                    <div class="btn-group" style="flex-direction: column; margin-top: 2rem;">
+                        <a href="https://github.com/Joaqstarr/SORN" class="btn btn-primary" style="width:100%">View Source Code</a>
+                        <a href="index.html#projects" class="btn btn-secondary" style="width:100%">← Back to Projects</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
 
+    <footer>
+        <div class="container flex-between">
+            <p>© 2026 Mounir Ziad</p>
+            <div class="footer-links">
+                <a href="mailto:mounirziad0@gmail.com">Contact</a>
+                <a href="https://github.com/mounirziad">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
 </body>
 </html>

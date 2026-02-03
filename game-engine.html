@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern C++ Engine | Mounir Ziad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-page">
+    <header id="main-header" class="header-scrolled">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mounir Ziad</a>
+                <div class="brand">Game Developer</div>
+            </div>
+            <nav><ul class="nav-links"><li><a href="index.html#projects">← Back to Projects</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-hero reveal-on-scroll">
+            <h1 class="accent">Modern C++ Game Engine</h1>
+            <div class="project-meta-large">
+                <span class="project-tag">C++17</span>
+                <span class="project-tag">OpenGL 3.3+</span>
+                <span class="project-tag">Entity-Component-System</span>
+                <span class="project-tag">Voxel-based GI</span>
+            </div>
+        </section>
+
+        <section class="project-cover reveal-on-scroll">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/vuJ5HgWKdho" allowfullscreen title="Game Engine Demo"></iframe>
+            </div>
+            <p class="video-caption">
+                <strong>Engine Demonstration:</strong> Showcasing real-time 3D rendering, procedural terrain, and advanced Global Illumination.
+            </p>
+        </section>
+
+        <div class="content-grid">
+            <div class="main-content reveal-on-scroll">
+                <h2>Project Overview</h2>
+                <p>Built entirely from scratch in modern C++, this engine serves as a professional-grade technical showcase for high-performance graphics and scalable software architecture. Designed with deep memory management and CPU-cache efficiency in mind, the system demonstrates an advanced mastery of the modern rendering pipeline.</p>
+
+                <h2>Advanced Graphics & Lighting</h2>
+                <p>The engine utilizes cutting-edge real-time graphics techniques to bring scenes to life with natural lighting and stunning visual fidelity.</p>
+                
+                <h3>Real-time Global Illumination</h3>
+                <p>The standout feature is a voxel-based Global Illumination system. Unlike static lighting, this system calculates indirect light in real-time using voxel cone tracing. This allows for dynamic color bleeding between surfaces and natural ambient propagation that responds instantly to scene changes.</p>
+
+                <div class="project-gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/engine-thumb.jpg" alt="GI and Bloom Showcase">
+                        <p class="caption">Advanced Lighting: Real-time GI with wall color bleeding and emissive HDR bloom.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/engine-2.png" alt="Wireframe Analysis">
+                        <p class="caption">Wireframe Analysis: Visualizing underlying mesh structure and ECS collision volumes.</p>
+                    </div>
+                </div>
+
+                <h2>Core Systems Architecture</h2>
+                <h3>Entity-Component-System (ECS)</h3>
+                <p>To ensure maximum scalability, I architected a custom ECS from the ground up. This data-oriented design moves away from heavy OOP inheritance, using type-safe component storage and efficient entity registries. This results in significantly higher performance when managing thousands of active game objects.</p>
+
+                <h3>Advanced Physics System</h3>
+                <p>The integrated physics system handles real-time object collisions, Newtonian gravity simulation, and mass-based interactions. It features realistic bounce and friction calculations, alongside height-mapped terrain collision detection.</p>
+
+                <h3>Procedural Terrain & Materials</h3>
+                <p>Terrain is generated in real-time using multi-octave noise functions and height mapping. The material system supports Physically-Based Rendering (PBR), allowing for realistic metallic and roughness properties, complemented by a centralized shader manager for runtime switching between techniques.</p>
+            </div>
+
+            <aside class="sidebar reveal-on-scroll">
+                <div class="sticky-box">
+                    <h3>Technical Specs</h3>
+                    <ul class="spec-list">
+                        <li><strong>Graphics API</strong> <strong>OpenGL 3.3+</strong></li>
+                        <li><strong>Language</strong> <strong>C++17</strong></li>
+                        <li><strong>Rendering</strong> <strong>PBR & Deferred</strong></li>
+                        <li><strong>Lighting</strong> <strong>Real-time GI</strong></li>
+                        <li><strong>Platform</strong> <strong>Windows</strong></li>
+                        <li><strong>Performance</strong> <strong>60+ FPS</strong></li>
+                    </ul>
+                    
+                    <h3>Key Achievements</h3>
+                    <ul class="spec-list">
+                        <li><strong>Memory-Efficient Design</strong></li>
+                        <li><strong>Dynamic Asset Hot-Loading</strong></li>
+                        <li><strong>Custom Math Library</strong></li>
+                        <li><strong>Integrated Debug UI</strong></li>
+                    </ul>
+
+                    <div class="btn-group" style="flex-direction: column; margin-top: 2rem;">
+                        <a href="https://github.com/mounirziad/OPENGL-Game-Engine" class="btn btn-primary" style="width:100%">View Source Code</a>
+                        <a href="index.html#projects" class="btn btn-secondary" style="width:100%">← Back to Projects</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container flex-between">
+            <p>© 2026 Mounir Ziad</p>
+            <div class="footer-links">
+                <a href="mailto:mounirziad0@gmail.com">Contact</a>
+                <a href="https://github.com/mounirziad">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

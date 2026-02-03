@@ -1,73 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mounir Ziad | Game Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Minimal additions for indentation */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Keep your existing header layout but add brand */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand {
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mounir Ziad | Systems & Gameplay Programmer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <div class="logo-container">
-        <div class="logo">Mounir Ziad</div>
-        <div class="brand">Game Developer</div>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </header>
+    <header id="main-header">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <div class="logo">Mounir Ziad</div>
+                <div class="brand">Game Developer</div>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="mailto:mounirziad0@gmail.com">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-content">
-      <img src="images/profile.jpg" alt="Mounir Ziad" class="profile-img">
-      <h2>Mounir Ziad</h2>
-      <p>
-        I'm a game developer and software engineer passionate about building immersive, modular,
-        and technically robust gameplay systems. I also produce work as a sound designer/composer
-        with over 10 years of musical experience.
-      </p>
-      <div class="hero-buttons">
-        <a href="about.html" class="btn">Learn More</a>
-        <a href="https://github.com/mounirziad" class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="contact.html" class="btn">Contact Me</a>
-      </div>
-    </div>
-  </section>
+    <main>
+        <section id="home" class="hero reveal-on-scroll">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Building systems that <span class="accent">bring worlds to life.</span></h1>
+                    <p>
+                        I'm a game developer and software engineer passionate about building immersive, 
+                        modular, and robust gameplay systems. I specialize in <strong>C++ Engine Architecture</strong> 
+                        and <strong>Gameplay systems</strong>, with a decade of experience in Music Composition. I am currently finishing up my
+Senior year at the University of Central Florida. 
+                    </p>
+                    <div class="btn-group">
+                        <a href="#projects" class="btn btn-primary">Explore Work</a>
+                        <a href="https://github.com/mounirziad" target="_blank" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="profile-frame">
+                        <div class="profile-glow"></div>
+                        <div class="profile-img-container">
+                            <img src="images/profile.jpg" alt="Mounir Ziad" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      &copy; 2025 Mounir Ziad. All Rights Reserved.
-    </div>
-  </footer>
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <h2>Technical Projects</h2>
+                </div>
+                
+                <div class="projects-grid">
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/engine-thumb.jpg" alt="C++ Engine">
+                        </div>
+                        <div class="project-header">
+                            <h3>Modern C++ Game Engine</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">C++17</span>
+                                <span class="project-tag">OpenGL</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>A professional-grade 3D engine featuring Voxel-based GI and custom ECS architecture for high-performance rendering.</p>
+                            <a href="game-engine.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
 
-  <script src="script.js"></script>
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/sorn-thumb.jpg" alt="SORN">
+                        </div>
+                        <div class="project-header">
+                            <h3>S.O.R.N.</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">UE5</span>
+                                <span class="project-tag">C++</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Fast-paced Multiplayer third-person mech shooter. Developed movement states, combat flow, and data-driven mission logic in Unreal.</p>
+                            <a href="sorn.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/whitemaw-thumb.png" alt="WhiteMaw">
+                        </div>
+                        <div class="project-header">
+                            <h3>WhiteMaw</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">Unity 6</span>
+                                <span class="project-tag">C#</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Intense survival horror. Engineered a complex predator AI system with noise-reactive investigation and stalking behaviors.</p>
+                            <a href="whitemaw.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/mechanisoul-thumb.png" alt="Mechanisoul">
+                        </div>
+                        <div class="project-header">
+                            <h3>Mechanisoul</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">C#</span>
+                                <span class="project-tag">Unity</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Lead Programmer for 3D Action-Platformer. Designed modular combat and ScriptableObject-driven Combat System.</p>
+                            <a href="mechanisoul.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/tetris-thumb.png" alt="Tetris">
+                        </div>
+                        <div class="project-header">
+                            <h3>Tetris Reimagined</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">C++</span>
+                                <span class="project-tag">Raylib</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>C++ recreation featuring a gravity shifter and dynamic blockades forcing real-time strategy changes.</p>
+                            <a href="tetris.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal-on-scroll">
+                        <div class="project-image">
+                            <img src="images/natures-solace-thumb.png" alt="Nature's Solace">
+                        </div>
+                        <div class="project-header">
+                            <h3>Nature's Solace</h3>
+                            <div class="project-meta">
+                                <span class="project-tag">Unity</span>
+                                <span class="project-tag">C#</span>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Meditative experience exploring human emotion through dynamic landscapes and ambient storytelling.</p>
+                            <a href="naturessolace.html" class="btn btn-sm">Deep Dive</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container flex-between">
+            <p>© 2026 Mounir Ziad</p>
+            <div class="footer-links">
+                <a href="mailto:mounirziad0@gmail.com">Contact</a>
+                <a href="https://github.com/mounirziad">GitHub</a>
+                <a href="https://www.linkedin.com/in/mounir-ziad-b739771ba/">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
 </body>
 </html>

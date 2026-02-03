@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Reimagined | Mounir Ziad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-page">
+    <header id="main-header" class="header-scrolled">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mounir Ziad</a>
+                <div class="brand">Game Developer</div>
+            </div>
+            <nav><ul class="nav-links"><li><a href="index.html#projects">← Back to Projects</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-hero reveal-on-scroll">
+            <h1 class="accent">Tetris Reimagined</h1>
+            <div class="project-meta-large">
+                <span class="project-tag">C++17</span>
+                <span class="project-tag">Raylib</span>
+                <span class="project-tag">Physics Systems</span>
+                <span class="project-tag">Algorithm Design</span>
+            </div>
+        </section>
+
+        <section class="project-cover reveal-on-scroll">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/s6VDMcdXiTk" allowfullscreen title="Tetris Reimagined Gameplay"></iframe>
+            </div>
+            <p class="video-caption">
+                <strong>Gameplay Showcase:</strong> Experience the gravity-shifting mechanics and dynamic blockades in action.
+            </p>
+        </section>
+
+        <div class="content-grid">
+            <div class="main-content reveal-on-scroll">
+                <h2>Project Overview</h2>
+                <p>Tetris Reimagined is a complete from-scratch C++ implementation of the classic puzzle game, rebuilt with innovative physics systems and modern architectural patterns. Eschewing existing Tetris libraries, every system—from grid management to collision detection—was engineered from the ground up using the Raylib framework. This project demonstrates high-performance game loop architecture and creative mechanics that challenge traditional spatial reasoning.</p>
+
+                <h2>Multi-Directional Gravity System</h2>
+                <p>The core innovation of this recreation is the gravity shifter. I implemented a dynamic physics handler that allows the fall-vector to rotate in 90-degree increments mid-game. This required a total overhaul of standard Tetris collision detection; the grid must be re-evaluated from four distinct directions to handle piece locking and line clearing accurately regardless of the current gravity state.</p>
+                
+                <h2>Dynamic Blockade System</h2>
+                <p>To increase tactical depth, I developed a procedural obstacle generation system. These blockades spawn mid-game based on player performance, forcing real-time strategy shifts. The spawn interval dynamically scales with the player's score, creating a smooth difficulty curve that adapts to the user's skill level.</p>
+
+                <div class="project-gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/tetris-1.png" alt="Gravity Vector Shift">
+                        <p class="caption">Mechanical Logic: Visualizing the grid re-orientation during a gravity vector shift.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/tetris-2.png" alt="Dynamic Blockade Spawn">
+                        <p class="caption">Spatial Reasoning: Procedural blockades spawning mid-game to disrupt traditional stacking patterns.</p>
+                    </div>
+                </div>
+
+                <h2>Technical Architecture & Design Patterns</h2>
+                <h3>Modular System Design</h3>
+                <p>The architecture is strictly decoupled into distinct systems for Input, Gravity, Scoring, and Rendering. This modularity ensures that the real-time game loop remains frame-rate independent, utilizing fixed time steps for physics integration to maintain consistent game feel across different hardware.</p>
+
+                <h3>Advanced Collision & Rotation</h3>
+                <p>I developed an efficient AABB (Axis-Aligned Bounding Box) collision system tailored for a cell-based grid. This includes sophisticated rotation validation and "Wall Kick" mechanics, ensuring that pieces can rotate even when pressed against boundaries or other blocks—a critical component of high-level Tetris gameplay.</p>
+
+                <h3>Memory & Algorithm Optimization</h3>
+                <p>The system utilizes optimized STL containers for grid data structures and piece allocation. Line clearing and piece rotation algorithms were designed for O(n) efficiency, ensuring zero performance drops even during complex multi-directional gravity transitions.</p>
+            </div>
+
+            <aside class="sidebar reveal-on-scroll">
+                <div class="sticky-box">
+                    <h3>Project Details</h3>
+                    <ul class="spec-list">
+                        <li><strong>Role</strong> <strong>Solo Developer</strong></li>
+                        <li><strong>Duration</strong> <strong>2 Months</strong></li>
+                        <li><strong>Lines of Code</strong> <strong>2,500+</strong></li>
+                        <li><strong>Language</strong> <strong>C++17</strong></li>
+                        <li><strong>Framework</strong> <strong>Raylib</strong></li>
+                    </ul>
+                    
+                    <h3>Key Innovations</h3>
+                    <ul class="spec-list">
+                        <li><strong>Multi-directional Gravity</strong></li>
+                        <li><strong>Dynamic Obstacle System</strong></li>
+                        <li><strong>Wall Kick Mechanics</strong></li>
+                        <li><strong>Adaptive Difficulty</strong></li>
+                    </ul>
+
+                    <div class="btn-group" style="flex-direction: column; margin-top: 2rem;">
+                        <a href="https://github.com/mounirziad/MounirZiadTetris" class="btn btn-primary" style="width:100%">View Source Code</a>
+                        <a href="index.html#projects" class="btn btn-secondary" style="width:100%">← Back to Projects</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container flex-between">
+            <p>© 2026 Mounir Ziad</p>
+            <div class="footer-links">
+                <a href="mailto:mounirziad0@gmail.com">Contact</a>
+                <a href="https://github.com/mounirziad">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanisoul | Mounir Ziad</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="deep-dive-page">
+    <header id="main-header" class="header-scrolled">
+        <div class="container flex-between">
+            <div class="logo-container">
+                <a href="index.html" class="logo">Mounir Ziad</a>
+                <div class="brand">Game Developer</div>
+            </div>
+            <nav><ul class="nav-links"><li><a href="index.html#projects">← Back to Projects</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-hero reveal-on-scroll">
+            <h1 class="accent">Mechanisoul</h1>
+            <div class="project-meta-large">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C# .NET</span>
+                <span class="project-tag">Modular Systems</span>
+                <span class="project-tag">Combat Architecture</span>
+            </div>
+        </section>
+
+        <section class="project-cover reveal-on-scroll">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/CaNMqxc0Kfc" allowfullscreen title="Mechanisoul Gameplay"></iframe>
+            </div>
+            <p class="video-caption">
+                <strong>Gameplay Demonstration:</strong> Showcasing mechanical precision, modular combat frameworks, and state-driven AI behaviors.
+            </p>
+        </section>
+
+        <div class="content-grid">
+            <div class="main-content reveal-on-scroll">
+                <h2>Project Overview</h2>
+                <p>Mechanisoul is an advanced Unity project developed at DreamStatic Studios, serving as a masterclass in sophisticated game architecture and modular systems design. As the Lead Programmer, Animator, and Music Composer, I was responsible for bridging the gap between technical implementation and creative direction, ensuring the hack-and-slash combat felt both responsive and production-ready.</p>
+
+                <h2>ScriptableObject Combat Framework</h2>
+                <p>To solve the challenge of rapid balancing and iteration, I engineered a data-driven combat framework using ScriptableObjects. By decoupling attack data from logic, designers could define complex weapon properties, damage curves, and combo sequences as assets. This empowered the creative team to build 11.2 million potential powerup combinations without requiring code recompilation.</p>
+                
+                <h2>Modular Character Controller</h2>
+                <p>The character controller utilizes a robust State Pattern implementation. This architecture manages transitions between grounded movement, aerial maneuvers, and high-precision combat states. The system maintains a clean separation of concerns, integrating an event-driven animation system that synchronizes frame-perfect hitboxes with visual feedback.</p>
+
+                <div class="project-gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/mechanisoul-1.png" alt="Modular Combat Architecture">
+                        <p class="caption">Architecture: ScriptableObject-driven weapon and ability framework for rapid design iteration.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/mechanisoul-2.png" alt="AI Behavior Tree">
+                        <p class="caption">AI Systems: Modular Behavior Tree implementation allowing for configurable decision-making and stalking logic.</p>
+                    </div>
+                </div>
+
+                <h2>AI & Targeting Systems</h2>
+                <h3>Modular Behavior Trees</h3>
+                <p>The enemy AI is driven by a custom Behavior Tree system. By utilizing a Blackboard architecture, the AI can make intelligent decisions based on player distance, visibility, and combat state. This modular approach allows for a wide variety of enemy archetypes to be created using shared behavioral nodes.</p>
+
+                <h3>Advanced Lock-On Targeting</h3>
+                <p>Inspired by classic 3D action titles, I developed a Zelda-style lock-on system. It features smooth camera interpolation, proximity-based target acquisition, and prioritized layering, ensuring that the player always has mechanical clarity during chaotic, high-mobility encounters.</p>
+            </div>
+
+            <aside class="sidebar reveal-on-scroll">
+                <div class="sticky-box">
+                    <h3>Project Details</h3>
+                    <ul class="spec-list">
+                        <li><strong>Studio</strong> <strong>DreamStatic Studios</strong></li>
+                        <li><strong>Role</strong> <strong>Lead Programmer</strong></li>
+                        <li><strong>Team Size</strong> <strong>11 Members</strong></li>
+                        <li><strong>Engine</strong> <strong>Unity</strong></li>
+                        <li><strong>Platform</strong> <strong>PC</strong></li>
+                    </ul>
+                    
+                    <h3>Technical Stack</h3>
+                    <ul class="spec-list">
+                        <li><strong>ScriptableObject Architecture</strong></li>
+                        <li><strong>Event-Driven Design</strong></li>
+                        <li><strong>AI Behavior Trees</strong></li>
+                        <li><strong>State Machine Pattern</strong></li>
+                    </ul>
+
+                    <div class="btn-group" style="flex-direction: column; margin-top: 2rem;">
+                        <a href="https://github.com/mounirziad/Mechanisoul-Proj/tree/Main" class="btn btn-primary" style="width:100%">View Source Code</a>
+                        <a href="index.html#projects" class="btn btn-secondary" style="width:100%">← Back to Projects</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container flex-between">
+            <p>© 2026 Mounir Ziad</p>
+            <div class="footer-links">
+                <a href="mailto:mounirziad0@gmail.com">Contact</a>
+                <a href="https://github.com/mounirziad">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
