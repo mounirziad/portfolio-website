@@ -1,39 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- PRELOADER LOGIC ---
+    // --- ROBUST PRELOADER LOGIC ---
     const preloader = document.getElementById('preloader');
     const videos = document.querySelectorAll('video');
+    const loadingText = document.querySelector('.loader-text');
     
-    // Helper to remove preloader
+    // Helper to remove preloader smoothly
     const removePreloader = () => {
-        if (preloader) {
+        if (preloader && !preloader.classList.contains('fade-out')) {
             preloader.classList.add('fade-out');
             setTimeout(() => preloader.style.display = 'none', 500);
         }
     };
 
-    // 1. Create a promise for every video
-    const videoPromises = Array.from(videos).map(video => {
-        return new Promise(resolve => {
-            if (video.readyState >= 3) {
-                resolve();
-            } else {
-                video.addEventListener('canplay', resolve, { once: true });
-                video.addEventListener('error', resolve, { once: true });
-            }
+    // 1. Force every video to start playing immediately
+    // This wakes up the browser's video decoder
+    videos.forEach(video => {
+        video.play().catch(() => {
+            // If autoplay is blocked (rare on muted), we just proceed
+            console.log("Autoplay blocked or waiting for interaction");
         });
     });
 
-    // 2. Wait for videos + window load
+    // 2. Create a strict promise for every video
+    const videoPromises = Array.from(videos).map(video => {
+        return new Promise(resolve => {
+            // A. If video is already playing and visible
+            if (video.currentTime > 0 && !video.paused && video.readyState >= 3) {
+                resolve();
+                return;
+            }
+
+            // B. Wait for the 'playing' event (This confirms the first frame is rendering)
+            const playHandler = () => {
+                video.removeEventListener('playing', playHandler);
+                resolve();
+            };
+            
+            // C. Fallback for cached videos that might not fire 'playing' again
+            const timeUpdateHandler = () => {
+                if(video.currentTime > 0) {
+                    video.removeEventListener('timeupdate', timeUpdateHandler);
+                    resolve();
+                }
+            }
+
+            video.addEventListener('playing', playHandler);
+            video.addEventListener('timeupdate', timeUpdateHandler);
+            
+            // D. Safety valve: If it errors, don't block the site
+            video.addEventListener('error', resolve, { once: true });
+        });
+    });
+
+    // 3. Wait for ALL videos + Window Load
     Promise.all([
         ...videoPromises,
         new Promise(resolve => window.addEventListener('load', resolve, { once: true }))
     ]).then(() => {
-        removePreloader();
+        // slight buffer to ensure rendering pipeline is clear
+        setTimeout(removePreloader, 100); 
     });
 
-    // 3. Fallback safety (5 seconds)
-    setTimeout(removePreloader, 5000);
+    // 4. Maximum Wait Time (Safety Net)
+    // If connection is too slow, show site after 4 seconds anyway
+    setTimeout(() => {
+        if (loadingText) loadingText.innerText = "STARTING...";
+        removePreloader();
+    }, 4000);
 
 
     // --- MOUSE SPOTLIGHT ---
