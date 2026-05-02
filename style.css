@@ -239,3 +239,38 @@ header {
     .hero-image-grid { grid-template-columns: 1fr; height: auto; }
     .video-container { max-width: 100%; padding-bottom: 56.25%; }
 }
+
+/* --- Steam Banner Styles --- */
+.steam-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(23, 26, 33, 0.8); /* Steam's signature dark blue-grey */
+    border: 1px solid rgba(58, 134, 255, 0.3);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.steam-banner:hover {
+    background: #1b2838;
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.steam-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.steam-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-main);
+}
